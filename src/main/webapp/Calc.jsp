@@ -3,11 +3,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Praqma Calculator</title>
 </head>
 <body>
 	<form method="POST" action="Calculator">
-		<input type="text" name="value" >			
+		<input type="text" name="value" >
+			
 		<input type="submit" name="plus" value="+">
 		<input type="submit" name="minus" value="-">
 		<input type="submit" name="divide" value="/">
