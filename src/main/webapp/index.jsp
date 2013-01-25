@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>Welcome</h1>
-<a href="/Calculator">Link to the calculator</a>
+<a href="Calculator">Link to the calculator</a>
 </body>
 </html>
