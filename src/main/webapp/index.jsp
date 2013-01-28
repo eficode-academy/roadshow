@@ -7,7 +7,18 @@
 
 </head>
 <body>
-<h1>Welcome</h1>
-<a href="/Calculator">Link to the calculator</a>
+	<h1>Welcome</h1>
+	<p>
+		<a href="Calculator">Link to the calculator</a>
+	</p>
+	
+	<h2>Assignments</h2>
+	<ul>
+		<li>Improve the user interface with buttons etc.. for example using Twitter Bootstrap templates</li>
+		<li>Introduce additional functionality, square root, store result for later use, modulus etc..</li>
+		<li>Make the calculator respond to GET requests</li>
+		<li>Other more options what?</li>
+		<li>Other options?</li>
+	</ul>
 </body>
 </html>

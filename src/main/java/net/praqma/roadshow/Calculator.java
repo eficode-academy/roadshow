@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.praqma.roadshow.model.CalculatorModel;
+import net.praqma.roadshow.model.CalculatorModelImpl;
+
 /**
  * Servlet implementation class Calculator
  */
 @WebServlet(urlPatterns ="/Calculator",description = "This is a small Calculator App used for our roadshow",displayName="Calulator Demo",name="Calculator")
 public class Calculator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final CalculatorModel model = new CalculatorModelImpl();
 	double result;
 
 	public Calculator() {
