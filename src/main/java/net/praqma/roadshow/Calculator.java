@@ -16,7 +16,7 @@ import net.praqma.roadshow.model.CalculatorModelImpl;
 /**
  * Servlet implementation class Calculator
  */
-@WebServlet(urlPatterns ="/Calculator",description = "This is a small Calculator App used for our roadshow",displayName="Calulator Demo",name="Calculator")
+@WebServlet(urlPatterns ={"/Calculator"},description = "This is a small Calculator App used for our roadshow",displayName="Calulator Demo",name="Calculator")
 public class Calculator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final CalculatorModel model = new CalculatorModelImpl();
@@ -35,7 +35,6 @@ public class Calculator extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		String valueString = request.getParameter("value");
 		String resultString = request.getParameter("result");
 

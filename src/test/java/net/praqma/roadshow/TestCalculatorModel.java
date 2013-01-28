@@ -12,7 +12,7 @@ public class TestCalculatorModel {
 	public static CalculatorModel model;
 	
 	@BeforeClass 
-	public static void createModel() {
+	public static void createModel() {		
 		model = new CalculatorModelImpl();
 	}
 	
@@ -20,6 +20,28 @@ public class TestCalculatorModel {
 	public void addTest() {
 		double expectedResult = 7.5d;		
 	 	Number number = model.add(new Double(2.5), new Integer(5));
-	 	assertEquals(expectedResult,number.doubleValue(), 0.0000000000000000001d);	 	
+	 	assertEquals(expectedResult,number.doubleValue(), 0d);	 	
 	}
+	
+	@Test
+	public void subtractTest() {
+		double expectedResult = 7.5d;
+		Number number = model.subtract(new Double(12.5), new Integer(5));
+		assertEquals(expectedResult,number.doubleValue(), 0d);
+	}
+	
+	@Test
+	public void divisionTest() {
+		double expectedResult = 7.5d;
+		Number number = model.subtract(new Double(15), new Integer(2));
+		assertEquals(expectedResult,number.doubleValue(), 0d);
+	}
+	
+	@Test
+	public void multiplyTest() {
+		double expectedResult = 7.5d;
+		Number number = model.subtract((expectedResult/2)*2, 2);
+		assertEquals(expectedResult,number.doubleValue(), 0d);		
+	}
+	
 }
