@@ -29,5 +29,17 @@ public class CalculatorModelImpl implements CalculatorModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void store(Number number) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Number load() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -5,4 +5,6 @@ public interface CalculatorModel {
 	public Number subtract(Number...numbers);
 	public Number multiply(Number...numbers);
 	public Number divide(Number...numbers);
+	public void store(Number number);
+	public Number load();	
 }
