@@ -4,7 +4,7 @@ public class CalculatorModelImpl implements CalculatorModel {
 
 	@Override
 	public Number add(Number... numbers) {
-		double res = 0d;
+		double res = 0d; 
 		
 		for(Number number : numbers) {
 			res+=number.doubleValue();
