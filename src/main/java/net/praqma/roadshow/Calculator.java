@@ -50,9 +50,9 @@ public class Calculator extends HttpServlet {
 
 			Map parameters = request.getParameterMap();
 			if (parameters.containsKey("plus")) {
-				result += value;
+				result = model.add(result,value).doubleValue();
 			} else if (parameters.containsKey("minus")) {
-				result -= value;
+				result = model.subtract(result,value).doubleValue();
 			} else if (parameters.containsKey("divide")) {
 				result /= value;
 			} else if (parameters.containsKey("multiply")) {

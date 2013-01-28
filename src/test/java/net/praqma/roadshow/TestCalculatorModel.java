@@ -20,6 +20,6 @@ public class TestCalculatorModel {
 	public void addTest() {
 		double expectedResult = 7.5d;		
 	 	Number number = model.add(new Double(2.5), new Integer(5));
-	 	assertEquals(expectedResult,number.doubleValue(),0.0000000000000000001d);	 	
+	 	assertEquals(expectedResult,number.doubleValue(), 0.0000000000000000001d);	 	
 	}
 }
