@@ -40,7 +40,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <server>TomcatServer</server>
-                    <url>http://localhost:8080/manager/text</url>
+                    <url>http://localhost:8080/manager/text/</url>
                     <update>true</update>
                 </configuration>
             </plugin>
