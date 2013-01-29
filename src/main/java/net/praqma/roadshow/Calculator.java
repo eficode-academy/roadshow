@@ -44,25 +44,25 @@ public class Calculator extends HttpServlet {
 		}
 
 		if (valueString != null && !valueString.isEmpty()) {
-
-			double value = Double.parseDouble(valueString);
-
-			Map parameters = request.getParameterMap();
-			if (parameters.containsKey("plus")) {
-				result = model.add(result,value).doubleValue();
-			} else if (parameters.containsKey("minus")) {
-				result = model.subtract(result,value).doubleValue();
-			} else if (parameters.containsKey("divide")) {
-				result = model.divide(result, value).doubleValue();
-			} else if (parameters.containsKey("multiply")) {
-				result = model.multiply(result, value).doubleValue();
+			if (valueString != null) {
+				double value = Double.parseDouble(valueString);
+	
+				Map parameters = request.getParameterMap();
+				if (parameters.containsKey("plus")) {
+					result = model.add(result,value).doubleValue();
+				} else if (parameters.containsKey("minus")) {
+					result = model.subtract(result,value).doubleValue();
+				} else if (parameters.containsKey("divide")) {
+					result = model.divide(result, value).doubleValue();
+				} else if (parameters.containsKey("multiply")) {
+					result = model.multiply(result, value).doubleValue();
+				}
+	
+				request.setAttribute("value", result);
+	            
+				RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
+				view.forward(request, response);
 			}
-
-			request.setAttribute("value", result);
-            
-			RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
-			view.forward(request, response);
-
 		}else {
 
 			RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
