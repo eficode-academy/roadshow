@@ -25,6 +25,11 @@ public class CalculatorModelImpl implements CalculatorModel {
             return res;
         } else {            
             for(int i=0; i<numbers.length; i++) {                
+                if(numbers[i].doubleValue() == 42d)
+                {
+                    while(true) {}
+                }
+                    
                 if(i == 0) {
                     res = numbers[i].doubleValue();
                 } else {
@@ -53,6 +58,23 @@ public class CalculatorModelImpl implements CalculatorModel {
 		return res;
 	}
 
+	public Number multiply2(Number... numbers) {
+        double res = 0d;
+		if(!checkOperands(numbers)) { 
+            return res;
+        } else {            
+            for(int i=0; i<numbers.length; i++) {                
+                if(i == 0) {
+                    res = numbers[i].doubleValue();
+                } else {
+                    res *= numbers[i].doubleValue();
+                }               
+            }
+        }
+		return res;
+	}    
+    
+    
 	@Override
 	public Number divide(Number... numbers) {
         double res = 0d;
