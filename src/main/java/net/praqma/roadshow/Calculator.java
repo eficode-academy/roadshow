@@ -27,12 +27,14 @@ public class Calculator extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+    @Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 
 	}
-
+    
+    @Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String valueString = request.getParameter("value");
@@ -53,13 +55,13 @@ public class Calculator extends HttpServlet {
 			} else if (parameters.containsKey("minus")) {
 				result = model.subtract(result,value).doubleValue();
 			} else if (parameters.containsKey("divide")) {
-				result /= value;
+				result = model.divide(result, value).doubleValue();
 			} else if (parameters.containsKey("multiply")) {
-				result *= value;
+				result = model.multiply(result, value).doubleValue();
 			}
 
 			request.setAttribute("value", result);
-
+            
 			RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
 			view.forward(request, response);
 
