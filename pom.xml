@@ -39,8 +39,8 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
-                    <server>TomcatServer</server>
-                    <url>http://localhost:8080/manager/text/</url>
+                    <server>RoadShow-TomcatServer</server>
+                    <url>http://roadshowtomcatserver:8080/manager/text/</url>
                     <update>true</update>
                 </configuration>
             </plugin>
