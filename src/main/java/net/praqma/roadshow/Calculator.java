@@ -57,11 +57,11 @@ public class Calculator extends HttpServlet {
 			} else if (parameters.containsKey("multiply")) {
 				result = model.multiply(result, value).doubleValue();
 			} else if (parameters.containsKey("store")) {
-                model.store(value);
+                
             } else if (parameters.containsKey("load")) {
-                request.setAttribute("value", model.load().doubleValue());
+                
             }
-
+            
 			request.setAttribute("value", result);
             
 			RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");

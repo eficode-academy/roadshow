@@ -3,7 +3,7 @@ package net.praqma.roadshow.model;
 public class CalculatorModelImpl implements CalculatorModel {
     
     
-    private Number storeValue;
+    private Number storeValue = new Double(203);
     
 	@Override
 	public Number add(Number... numbers) {

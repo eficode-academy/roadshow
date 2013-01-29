@@ -3,17 +3,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Praqma Calculator</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<title>Roadshow</title>
 </head>
 <body>
+
 	<form method="POST" action="Calculator">
 		<input type="text" name="value"/>
-        <input type="submit" name="load" value="load"/>
-        <input type="submit" name="store" value="store"/>
-		<input type="submit" name="plus" value="+"/>
-		<input type="submit" name="minus" value="-"/>
-		<input type="submit" name="divide" value="/"/>
-		<input type="submit" name="multiply" value="*"/>
+        <button class="btn" type="submit" value="load">load</button>
+        <button class="btn" type="submit" name="store">store</button>
+		<button class="btn" type="submit" name="plus">+</button>
+		<button class="btn"  type="submit" name="minus">-</button>
+        <button class="btn" type="submit" name="divide">/</button>
+        <button class="btn" type="submit" name="multiply">*</button>
 		<br>
 		<input type="text" name="result" readonly="readonly" value="<%if(request.getAttribute("value") != null){out.print(request.getAttribute("value"));} %>">
 	</form>
