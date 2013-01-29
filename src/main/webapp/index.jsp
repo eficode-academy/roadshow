@@ -24,7 +24,7 @@
 			<li>Make the user interface respond to keyboard input (plus, minus, divide, multiply)</li>
 			<li>Make the calculator able calculate with imaginary numbers</li>
 			<li>Implement square root function</li>
-            <li>Create a 'scientific' calculator, by extending the CalculatorModel interface</li>
+            <li>Create a 'scientific' calculator, by extending the CalculatorModel interface</li>            
 		</ol>
 		</div>
 		 <img src="images/eq_display.png" style="float:left; margin-left:20px;"/>

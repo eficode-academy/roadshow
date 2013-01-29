@@ -28,15 +28,13 @@ public class Calculator extends HttpServlet {
 	}
 
     @Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 
 	}
     
     @Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String valueString = request.getParameter("value");
 		String resultString = request.getParameter("result");
 
