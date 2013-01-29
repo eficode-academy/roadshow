@@ -94,7 +94,6 @@
             </activation> 
             <build>
                 <plugins>
-					<!-- Testing checkstyle -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -109,6 +108,28 @@
                             </execution>
                         </executions>
                     </plugin>
+					<plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-pmd-plugin</artifactId>
+		                <version>2.7.1</version>
+		                <configuration>
+		                        <linkXref>true</linkXref>
+		                        <sourceEncoding>utf-8</sourceEncoding>
+		                        <minimumTokens>100</minimumTokens>
+		                        <targetJdk>1.5</targetJdk>
+		                </configuration>
+                    </plugin>
+
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>findbugs-maven-plugin</artifactId>
+						<version>2.5.2</version>
+						<configuration>
+						        <xmlOutput>true</xmlOutput>
+						        <!-- Optional directory to put findbugs xdoc xml report -->
+						        <xmlOutputDirectory>target/site</xmlOutputDirectory>
+						</configuration>
+					</plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>cobertura-maven-plugin</artifactId>
@@ -144,6 +165,30 @@
                     </plugin>
                 </plugins>
             </build>
+				<plugin>
+		            <groupId>org.codehaus.mojo</groupId>
+		            <artifactId>findbugs-maven-plugin</artifactId>
+		            <version>2.5.2</version>
+                </plugin>
+
+                <plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-pmd-plugin</artifactId>
+		            <version>2.7.1</version>
+		            <configuration>
+		                <linkXref>true</linkXref>
+		                <sourceEncoding>utf-8</sourceEncoding>
+		                <minimumTokens>100</minimumTokens>
+		                <targetJdk>1.5</targetJdk>
+		                <excludes>
+		                        <exclude>**/*Bean.java</exclude>
+		                        <exclude>**/generated/*.java</exclude>
+		                </excludes>
+		                <excludeRoots>
+		                        <excludeRoot>target/generated-sources/stubs</excludeRoot>
+		                </excludeRoots>
+		            </configuration>
+                </plugin>
         </profile>
     </profiles>
 
