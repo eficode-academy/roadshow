@@ -5,7 +5,7 @@ public class CalculatorModelImpl implements CalculatorModel {
     private Number storeValue;
 
     @Override
-    public Number add(Number... numbers) {
+    public Number add(final Number... numbers) {
         double res = 0d;
         if (!checkOperands(numbers)) {
             return res;
