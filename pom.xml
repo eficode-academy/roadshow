@@ -127,6 +127,9 @@
                                 <!-- <inherited>false</inherited> <configuration> </configuration> -->
                             </execution>
                         </executions>
+                        <configuration>
+                            <linkXRef>true</linkXRef>
+                            </configuration>
                     </plugin>
 					<plugin>
 		                <groupId>org.apache.maven.plugins</groupId>
@@ -165,6 +168,7 @@
                             </execution>
                         </executions>
 						<configuration>
+                            <linkXRef>true</linkXRef>
 						        <xmlOutput>true</xmlOutput>
 						        <!-- Optional directory to put findbugs xdoc xml report -->
 						        <xmlOutputDirectory>target/site</xmlOutputDirectory>
@@ -179,6 +183,7 @@
                                 <format>html</format>
                                 <format>xml</format>
                             </formats>
+                            <linkXRef>true</linkXRef>
                         </configuration>
                         <executions>
                             <execution>
