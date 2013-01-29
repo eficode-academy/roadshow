@@ -67,7 +67,7 @@ public class TestCalculatorModel {
 	}
     
     @Test
-    public void testChecOperands() {
+    public void testCheckOperands() {
         Number[] illegaArray = new Number[2];
         illegaArray[0] = new Double(2);
         illegaArray[1] = null;
