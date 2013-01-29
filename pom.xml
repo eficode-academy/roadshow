@@ -78,8 +78,49 @@
             <version>4.7</version>
         </dependency>
     </dependencies>
-  
+
+            
+            
     <profiles>
+                <profile>
+            <id>jenkins2</id>
+            <activation>
+                <!-- FIXME -->
+                <!-- <activeByDefault>false</activeByDefault> -->
+                <property>
+                    <!-- Jenkins by default defines a property BUILD_NUMBER which is used
+                    to enable the profile. -->
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+
+            </activation> 
+            
+                        <build>
+<plugins>
+            					<plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-pmd-plugin</artifactId>
+		                <version>2.7.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>cpd</goal>
+                                </goals>
+                                <!-- <inherited>false</inherited> <configuration> </configuration> -->
+                            </execution>
+                        </executions>
+		                <configuration>
+		                        <linkXref>true</linkXref>
+		                        <sourceEncoding>utf-8</sourceEncoding>
+		                        <minimumTokens>100</minimumTokens>
+		                        <targetJdk>1.6</targetJdk>
+		                </configuration>
+                    </plugin>
+                    </plugins>
+                    </build>
+                    </profile>
+            
         <profile>
             <id>jenkins</id>
             <activation>
@@ -129,7 +170,6 @@
                             <execution>
                                 <phase>package</phase>
                                 <goals>
-                                    <goal>cpd</goal>
                                     <goal>pmd</goal>
                                 </goals>
                                 <!-- <inherited>false</inherited> <configuration> </configuration> -->
