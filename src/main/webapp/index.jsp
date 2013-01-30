@@ -15,7 +15,7 @@
 		<div style="float:left; vertical-align:top;">
 		<h2>Assignments</h2>
 		<ol>
-			<li>Improve the user interface with buttons etc.. for example using Twitter Bootstrap templates</li>
+			<li>Improve the user interface with better layout and prettier buttons etc.. for example using Twitter Bootstrap templates</li>
 			<li>Introduce additional functionality, square root, store result for later use, modulus etc..</li>
             <li>Make the calculator respond to <strong>GET</strong> requests</li>
 			<li>Convert the calculator to use the model</li>

@@ -1,4 +1,4 @@
-package net.praqma.roadshow;
+package net.praqma.roadshow.unit;
 
 import net.praqma.roadshow.model.CalculatorModel;
 import net.praqma.roadshow.model.CalculatorModelImpl;
