@@ -1,15 +1,13 @@
-package net.praqma;
+package net.praqma.roadshow.functional;
 
 import com.thoughtworks.selenium.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.server.SeleniumServer;
 
 import static org.junit.Assert.*;
-import java.util.regex.Pattern;
 
-public class AdditionRC {
+public class TestAdditionRC {
 	private Selenium selenium;
 
 	@Before
