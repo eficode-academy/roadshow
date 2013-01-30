@@ -18,14 +18,13 @@ public class TestAdditionRC {
 
 	@Test
 	public void testAddition() throws Exception {
-		selenium.open("/RoadShow-0.0.1-SNAPSHOT/Calculator");
+		selenium.open("/RoadShow/Calculator");
 		selenium.type("name=value", "2");
 		selenium.click("name=plus");
 		selenium.waitForPageToLoad("30000");
 		selenium.type("name=value", "3");
 		selenium.click("name=plus");
-		selenium.waitForPageToLoad("30000");
-		
+		selenium.waitForPageToLoad("30000");		
 		assertEquals("5.0", selenium.getValue("name=result"));
 	}
 
