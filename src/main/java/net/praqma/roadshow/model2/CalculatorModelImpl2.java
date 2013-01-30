@@ -1,6 +1,8 @@
-package net.praqma.roadshow.model;
+package net.praqma.roadshow.model2;
 
-public class CalculatorModelImpl implements CalculatorModel {
+public class CalculatorModelImpl2 implements CalculatorModel2 {
+
+    private Number storeValue;
 
     @Override
     public Number add(final Number... numbers) {
@@ -91,6 +93,17 @@ public class CalculatorModelImpl implements CalculatorModel {
             }
         }
         return res;
+    }
+
+    @Override
+    public void store(Number storeValue) {
+        this.storeValue = storeValue;
+
+    }
+
+    @Override
+    public Number load() {
+        return this.storeValue;
     }
 
     public boolean checkOperands(Number... number) {

@@ -8,7 +8,7 @@
 <title>Roadshow</title>
 </head>
 <body>
-	<form method="GET" action="Calculator">
+	<form method="POST" action="Calculator">
         <input type="text" name="value" value="<%if(request.getParameter("load") != null && request.getSession().getAttribute("storedValue") != null){out.print(request.getSession().getAttribute("storedValue"));}%>"/>
         <button class="btn" type="submit" name="load">load</button>
         <button class="btn" type="submit" name="store">store</button>

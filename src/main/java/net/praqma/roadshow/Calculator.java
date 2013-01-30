@@ -2,7 +2,6 @@ package net.praqma.roadshow;
 
 import java.io.IOException;
 import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,21 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.html.HTMLDocument;
-
 import net.praqma.roadshow.model.CalculatorModel;
 import net.praqma.roadshow.model.CalculatorModelImpl;
 
 /**
  * Servlet implementation class Calculator
  */
-@WebServlet(urlPatterns ={"/Calculator"},description = "This is a small Calculator App used for our roadshow",displayName="Calulator Demo",name="Calculator")
+@WebServlet(urlPatterns = {"/Calculator"}, description = "This is a small Calculator App used for our roadshow", displayName = "Calulator Demo", name = "Calculator")
 public class Calculator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final CalculatorModel model = new CalculatorModelImpl();
-    private int numberOfCalculations;
-	double result;
-
 	public Calculator() {
 		super();
 	}
@@ -44,13 +38,12 @@ public class Calculator extends HttpServlet {
 		if (resultString != null && !resultString.isEmpty()) {
 			result = Double.parseDouble(resultString);
 		}
+        
         Map parameters = request.getParameterMap();
         
 		if (valueString != null && !valueString.isEmpty() && (!parameters.containsKey("store") || !parameters.containsKey("load"))) {
-
-			double value = Double.parseDouble(valueString);
-
-
+            if (valueString != null) {
+                double value = Double.parseDouble(valueString);
 			if (parameters.containsKey("plus")) {
 				result = model.add(result,value).doubleValue();
 			} else if (parameters.containsKey("minus")) {
@@ -65,19 +58,19 @@ public class Calculator extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
 			view.forward(request, response);
 
-		} else {
-            if(parameters.containsKey("store")) {
-                session.setAttribute("storedValue", result);
-            } else if (parameters.containsKey("load")) {
-                  Double val = (Double)session.getAttribute("storedValue");
-                  if(val != null) {
-                      request.setAttribute("value", val);                      
-                  }
-                
-            }
-			RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
-			view.forward(request, response);
+            } else {
+                if(parameters.containsKey("store")) {
+                    session.setAttribute("storedValue", result);
+                } else if (parameters.containsKey("load")) {
+                      Double val = (Double)session.getAttribute("storedValue");
+                      if(val != null) {
+                          request.setAttribute("value", val);                      
+                      }
 
-		}
-	}
+                }
+                RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
+                view.forward(request, response);
+            }
+        }
+    }
 }

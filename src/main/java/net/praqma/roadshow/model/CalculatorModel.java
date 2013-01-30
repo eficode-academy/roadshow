@@ -6,10 +6,13 @@ package net.praqma.roadshow.model;
  * @author Praqma
  */
 public interface CalculatorModel {
-	public Number add(Number...numbers);
-	public Number subtract(Number...numbers);
-	public Number multiply(Number...numbers);
-	public Number divide(Number...numbers);
-	public void store(Number number);
-	public Number load();	
+
+    public Number add(Number... numbers);
+
+    public Number subtract(Number... numbers);
+
+    public Number multiply(Number... numbers);
+
+    public Number divide(Number... numbers);
+
 }
