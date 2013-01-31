@@ -14,7 +14,7 @@
         <input type="text" name="value" value="<%if(request.getParameter("load") != null && request.getSession().getAttribute("storedValue") != null){out.print(request.getSession().getAttribute("storedValue"));}%>"/>
         <button class="btn" type="submit" name="load">load</button>
         <button class="btn" type="submit" name="store">store</button>
-		<button class="btn" type="submit" name="plus">+</button>
+		<button class="btn btn-success" type="submit" name="plus">+</button>
 		<button class="btn" type="submit" name="minus">-</button>
         <button class="btn" type="submit" name="divide">/</button>
         <button class="btn" type="submit" name="multiply">*</button>
