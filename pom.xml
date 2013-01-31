@@ -19,13 +19,13 @@
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.0</version>
                 </plugin>
-<plugin>
-  <artifactId>maven-release-plugin</artifactId>
-  <configuration>
-<releaseProfiles>reTest</releaseProfiles>
-	  <goals>tomcat7:deploy -Dtomcat.username=deployer -Dtomcat.password=tomcat -PreTest</goals>
-  </configuration>
-</plugin>
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <configuration>
+                    <!--<releaseProfiles>reTest</releaseProfiles>-->
+                        <goals>tomcat7:deploy -Prelease</goals>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
   
@@ -123,43 +123,6 @@
     </dependencies>
 
     <profiles>
-<profile>
-            <id>rel</id>
-			<activation>
-                <property>
-                    <name>env.BUILD_NUMBER</name>
-                </property>
-            </activation> 
-            <build>
-				<plugins>
-
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-            <id>reTest</id>
-			<activation>
-                <property>
-                    <name>env.BUILD_NUMBER</name>
-                </property>
-            </activation> 
-            <build>
-				<plugins>
-
-					<plugin>
-				        <groupId>org.apache.tomcat.maven</groupId>
-				        <artifactId>tomcat7-maven-plugin</artifactId>
-				        <configuration>                    
-				            <server>RoadShow-TomcatServer</server>
-				            <url>http://roadshowtomcatserver:8080/manager/text/</url>
-							<path>/RoadShoww</path>
-<!--							<warFile>${project.build.directory}/${project.build.finalName}</warFile> -->
-				            <update>true</update>                    
-				        </configuration>
-				    </plugin>
-				</plugins>
-			</build>
-		</profile>
 		<profile>
             <id>release</id>
 			<activation>
