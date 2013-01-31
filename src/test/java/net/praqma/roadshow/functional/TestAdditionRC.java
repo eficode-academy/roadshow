@@ -12,7 +12,7 @@ public class TestAdditionRC {
 
 	@Before
 	public void setUp() throws Exception {
-		selenium = new DefaultSelenium("localhost", 4444, "*chrome", "http://localhost:8081/");
+		selenium = new DefaultSelenium("localhost", 4444, "*chrome", "http://roadshowtomcatserver:8080/");
 		selenium.start();
 	}
 

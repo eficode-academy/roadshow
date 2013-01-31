@@ -32,12 +32,14 @@ public class CalculatorModelImpl implements CalculatorModel {
                 } else {
                     res -= numbers[i].doubleValue();
                 }
-
             }
         }
         return res;
     }
-
+    
+    /*
+     * This method has an error
+     */
     @Override
     public Number multiply(Number... numbers) {
         double res = 0d;
