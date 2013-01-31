@@ -26,3 +26,7 @@ Setup your hostfile for these servers (ip-adresses may vary - use your own)
 10.10.1.129   roadshowseleniumserver
 
 10.10.1.129   roadshowbuildslave
+
+10.10.1.133   roadshowjenkins
+
+10.10.1.133   roadshowartifactory
