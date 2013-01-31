@@ -116,6 +116,29 @@
 
     <profiles>
 		<profile>
+            <id>reTest</id>
+			<activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation> 
+            <build>
+				<plugins>
+					<plugin>
+				        <groupId>org.apache.tomcat.maven</groupId>
+				        <artifactId>tomcat7-maven-plugin</artifactId>
+				        <configuration>                    
+				            <server>RoadShow-TomcatServer</server>
+				            <url>http://roadshowtomcatserver:8080/manager/text/</url>
+							<path>/RoadShow</path>
+							<warDirectory>target/</warDirectory>
+				            <update>true</update>                    
+				        </configuration>
+				    </plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
             <id>release</id>
 			<activation>
                 <property>
@@ -338,4 +361,10 @@
             </build>
         </profile>
     </profiles>
+
+    <scm>
+        <connection>scm:git:http://github.com/Praqma/RoadShow.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow.git</developerConnection>
+        <url>https://github.com/Praqma/RoadShow.git</url>
+    </scm>
 </project>
