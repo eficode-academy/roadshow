@@ -20,6 +20,9 @@ To create a test using the selenium IDE for firefox. Record the test and export 
 
 # Server stuff
 Setup your hostfile for these servers (ip-adresses may vary - use your own)
+
 10.10.1.129   roadshowtomcatserver
+
 10.10.1.129   roadshowseleniumserver
+
 10.10.1.129   roadshowbuildslave
