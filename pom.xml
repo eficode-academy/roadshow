@@ -124,14 +124,21 @@
             </activation> 
             <build>
 				<plugins>
+<plugin>
+  <artifactId>maven-release-plugin</artifactId>
+  <configuration>
+    <releaseProfiles>prod</releaseProfiles>
+    <goals>tomcat:deploy</goals> 
+  </configuration>
+</plugin>
 					<plugin>
 				        <groupId>org.apache.tomcat.maven</groupId>
 				        <artifactId>tomcat7-maven-plugin</artifactId>
 				        <configuration>                    
 				            <server>RoadShow-TomcatServer</server>
 				            <url>http://roadshowtomcatserver:8080/manager/text/</url>
-							<path>/RoadShow</path>
-							<warFile>${project.build.directory}/${project.build.finalName}</warFile>
+							<path>/RoadShoww</path>
+<!--							<warFile>${project.build.directory}/${project.build.finalName}</warFile> -->
 				            <update>true</update>                    
 				        </configuration>
 				    </plugin>
@@ -147,6 +154,7 @@
             </activation> 
             <build>
 				<plugins>
+
 					<plugin>
 				        <groupId>org.apache.tomcat.maven</groupId>
 				        <artifactId>tomcat7-maven-plugin</artifactId>
@@ -363,8 +371,8 @@
     </profiles>
 
     <scm>
-        <connection>scm:git:http://github.com/Praqma/RoadShow.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow.git</developerConnection>
+        <connection>scm:git:https://github.com/Praqma/RoadShow.git</connection>
+        <developerConnection>scm:git:https://github.com/Praqma/RoadShow.git</developerConnection>
         <url>https://github.com/Praqma/RoadShow.git</url>
     </scm>
 </project>
