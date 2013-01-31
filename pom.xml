@@ -379,8 +379,8 @@
     </profiles>
 
     <scm>
-        <connection>scm:git:https://github.com/Praqma/RoadShow.git</connection>
-        <developerConnection>scm:git:https://github.com/Praqma/RoadShow.git</developerConnection>
+        <connection>scm:git:git@github.com:Praqma/RoadShow.git</connection>
+        <developerConnection>scm:git:git@github.com:Praqma/RoadShow.git</developerConnection>
         <url>https://github.com/Praqma/RoadShow.git</url>
       <tag>HEAD</tag>
   </scm>
