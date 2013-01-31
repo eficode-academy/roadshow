@@ -380,7 +380,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/Praqma/RoadShow.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:Praqma/RoadShow.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow.git</developerConnection>
         <url>https://github.com/Praqma/RoadShow.git</url>
       <tag>RoadShow-0.0.9</tag>
   </scm>
