@@ -64,11 +64,12 @@
                         <version>2.11</version>
                     </dependency>                  
                 </dependencies>    
-                <configuration>
+<!--                <configuration>
                     <includes>
                         <include>net/praqma/roadshow/unit/*.java</include>
+                        <include>net/praqma/roadshow/unit/*.java</include>
                     </includes>
-                </configuration>      
+                </configuration>      -->
             </plugin>      
         </plugins>
     </build>
