@@ -127,7 +127,7 @@
 <plugin>
   <artifactId>maven-release-plugin</artifactId>
   <configuration>
-    <releaseProfiles>prod</releaseProfiles>
+<!--    <releaseProfiles>prod</releaseProfiles>-->
     <goals>tomcat7:deploy -Dtomcat.username=deployer -Dtomcat.password=tomcat</goals> 
   </configuration>
 </plugin>
