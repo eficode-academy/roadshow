@@ -20,7 +20,9 @@
                     <version>2.0</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
+                    <version>2.4</version>
                     <configuration>
                     <!--<releaseProfiles>release</releaseProfiles>-->
                         <goals>tomcat7:deploy -Prelease</goals>
@@ -105,7 +107,7 @@
         <snapshotRepository>
             <id>ubuntu</id>
             <name>ubuntu-snapshots</name>
-            <url>http://roadshowartifactory:8081/artifactory/ext-snapshot-local</url>
+            <url>http://roadshowartifactory:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
 	</distributionManagement>
     
@@ -135,6 +137,23 @@
     </dependencies>
 
     <profiles>
+    <profile>
+            <id>rel</id>
+			<activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation> 
+            <build>
+				<plugins>
+					<plugin>
+					    <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.4</version>
+                    </plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
             <id>release</id>
 			<activation>
