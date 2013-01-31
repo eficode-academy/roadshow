@@ -99,23 +99,6 @@
     </dependencies>
 
     <profiles>
-		<profile>
-            <id>selenium</id>
-            <activation>
-                <!-- FIXME -->
-                <!-- <activeByDefault>false</activeByDefault> -->
-                <property>
-                    <!-- Jenkins by default defines a property BUILD_NUMBER which is used
-                    to enable the profile. -->
-                    <name>env.BUILD_NUMBER</name>
-                </property>
-
-            </activation> 
-            <build>
-                <plugins>
-				</plugins>
-			</build>
-		</profile>
         <profile>
             <id>jenkins</id>
             <activation>
