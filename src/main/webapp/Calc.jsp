@@ -7,6 +7,8 @@
 <script type="text/javascript" src="js/calculator_js.js"></script>
 <title>Roadshow</title>
 </head>
+<h3>Calculator v. ${version}</h3>
+
 <body>
 	<form method="GET" action="Calculator">
         <input type="text" name="value" value="<%if(request.getParameter("load") != null && request.getSession().getAttribute("storedValue") != null){out.print(request.getSession().getAttribute("storedValue"));}%>"/>

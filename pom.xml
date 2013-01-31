@@ -3,10 +3,12 @@
     <groupId>net.praqma.roadshow</groupId>
     <artifactId>RoadShow</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    
     <packaging>war</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <display_name>blaha.${version}</display_name>
     </properties>
     
     <build>
@@ -40,6 +42,19 @@
                     <!-- Exclude servlet-api from packaging, causes conflict with tomcat -->
                     <!-- <packagingExcludes>WEB-INF/lib/javax.servlet-api-3.0.1.jar</packagingExcludes> -->
                     <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>gif</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>jpg</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>png</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
             
@@ -50,7 +65,7 @@
                     <server>RoadShow-TomcatServer</server>
                     <url>http://roadshowtomcatserver:8080/manager/text/</url>
 					<path>/RoadShow-RC</path>
-                    <update>true</update>
+                    <update>true</update>                    
                 </configuration>
             </plugin>
 
