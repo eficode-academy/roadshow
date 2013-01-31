@@ -7,7 +7,7 @@
 
 </head>
 <body>
-	<h1>Welcome</h1>
+    <h1>Welcome</h1>
 	<p>
 		<a href="Calculator">Link to the calculator</a>
 	</p>
