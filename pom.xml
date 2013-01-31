@@ -96,6 +96,19 @@
         </plugins>
     </build>
     
+    <distributionManagement>
+        <repository>
+            <id>ubuntu</id>
+            <name>ubuntu-releases</name>
+            <url>http://roadshowartifactory:8081/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>ubuntu</id>
+            <name>ubuntu-snapshots</name>
+            <url>http://roadshowartifactory:8081/artifactory/ext-snapshot-local</url>
+        </snapshotRepository>
+	</distributionManagement>
+    
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
