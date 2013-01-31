@@ -23,10 +23,10 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>2.4</version>
-                    <configuration>
-                    <!--<releaseProfiles>release</releaseProfiles>-->
+                    <!--<configuration>
+                    <releaseProfiles>release</releaseProfiles>
                         <goals>tomcat7:deploy -Prelease</goals>
-                    </configuration>
+                    </configuration>-->
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -137,7 +137,7 @@
     </dependencies>
 
     <profiles>
-    <profile>
+        <profile>
             <id>rel</id>
 			<activation>
                 <property>
