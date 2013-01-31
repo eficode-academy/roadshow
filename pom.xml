@@ -22,7 +22,7 @@
                 <plugin>
                     <artifactId>maven-release-plugin</artifactId>
                     <configuration>
-                    <!--<releaseProfiles>reTest</releaseProfiles>-->
+                    <!--<releaseProfiles>release</releaseProfiles>-->
                         <goals>tomcat7:deploy -Prelease</goals>
                     </configuration>
                 </plugin>
@@ -132,7 +132,6 @@
             </activation> 
             <build>
 				<plugins>
-
 					<plugin>
 				        <groupId>org.apache.tomcat.maven</groupId>
 				        <artifactId>tomcat7-maven-plugin</artifactId>
