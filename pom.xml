@@ -114,7 +114,7 @@
             </activation> 
             <build>
                 <plugins>
-				<plugins>
+				</plugins>
 			</build>
 		</profile>
         <profile>
