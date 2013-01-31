@@ -46,14 +46,30 @@
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <configuration>
-                    
+                <configuration>                    
                     <server>RoadShow-TomcatServer</server>
                     <url>http://roadshowtomcatserver:8080/manager/text/</url>
                     <update>true</update>
                 </configuration>
             </plugin>
-               
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.13</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>2.11</version>
+                    </dependency>                  
+                </dependencies>    
+                <configuration>
+                    <includes>
+                        <include>net/praqma/roadshow/unit/*.java</include>
+                    </includes>
+                </configuration>     
+            </plugin>      
         </plugins>
     </build>
     
@@ -83,6 +99,23 @@
     </dependencies>
 
     <profiles>
+		<profile>
+            <id>selenium</id>
+            <activation>
+                <!-- FIXME -->
+                <!-- <activeByDefault>false</activeByDefault> -->
+                <property>
+                    <!-- Jenkins by default defines a property BUILD_NUMBER which is used
+                    to enable the profile. -->
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+
+            </activation> 
+            <build>
+                <plugins>
+				</plugins>
+			</build>
+		</profile>
         <profile>
             <id>jenkins</id>
             <activation>

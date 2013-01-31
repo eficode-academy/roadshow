@@ -11,8 +11,8 @@ public class TestAdditionRC {
 	private Selenium selenium;
 
 	@Before
-	public void setUp() throws Exception {
-		selenium = new DefaultSelenium("localhost", 4444, "*chrome", "http://roadshowtomcatserver:8080/");
+	public void setUp() throws Exception {        
+		selenium = new DefaultSelenium("roadshowseleniumserver", 4444, "*firefox", "http://roadshowtomcatserver:8080/");
 		selenium.start();
 	}
 
@@ -28,6 +28,30 @@ public class TestAdditionRC {
 		assertEquals("5.0", selenium.getValue("name=result"));
 	}
 
+    @Test
+	public void testMultiplication() throws Exception {
+		selenium.open("/RoadShow/Calculator");
+		selenium.type("name=value", "7");
+		selenium.click("name=multiply");
+		selenium.waitForPageToLoad("30000");
+		selenium.type("name=value", "6");
+		selenium.click("name=multiply");
+		selenium.waitForPageToLoad("30000");		
+		assertEquals("42.0", selenium.getValue("name=result"));
+	}
+    
+    @Test
+	public void testSubtract() throws Exception {
+		selenium.open("/RoadShow/Calculator");
+		selenium.type("name=value", "7");
+		selenium.click("name=multiply");
+		selenium.waitForPageToLoad("30000");
+		selenium.type("name=value", "6");
+		selenium.click("name=multiply");
+		selenium.waitForPageToLoad("30000");		
+		assertEquals("1.0", selenium.getValue("name=result"));
+	}
+    
 	@After
 	public void tearDown() throws Exception {
 		selenium.stop();
