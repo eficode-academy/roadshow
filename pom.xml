@@ -19,13 +19,12 @@
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.0</version>
                 </plugin>
-<plugin>
-  <artifactId>maven-release-plugin</artifactId>
-  <configuration>
-<releaseProfiles>reTest</releaseProfiles>
-	  <goals>tomcat7:deploy -Dtomcat.username=deployer -Dtomcat.password=tomcat -PreTest</goals>
-  </configuration>
-</plugin>
+                <plugin>
+                  <artifactId>maven-release-plugin</artifactId>
+                  <configuration>
+                      <goals>tomcat7:deploy -Dtomcat.username=deployer -Dtomcat.password=tomcat -PreTest</goals>
+                  </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
   
@@ -152,7 +151,7 @@
 				        <configuration>                    
 				            <server>RoadShow-TomcatServer</server>
 				            <url>http://roadshowtomcatserver:8080/manager/text/</url>
-							<path>/RoadShoww</path>
+							<path>/RoadShow</path>
 <!--							<warFile>${project.build.directory}/${project.build.finalName}</warFile> -->
 				            <update>true</update>                    
 				        </configuration>
