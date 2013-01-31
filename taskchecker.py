@@ -3,7 +3,7 @@ import re
 
 pipe = Popen(["git", "log", "-1"], stdout=PIPE)
 gitLog = pipe.communicate()[0]
-
+print gitLog
 matchObj = re.match(r"Task\s+(\d+)",gitLog, flags=0)
 
 if not matchObj:
