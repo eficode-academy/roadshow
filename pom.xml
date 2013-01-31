@@ -49,6 +49,7 @@
                 <configuration>                    
                     <server>RoadShow-TomcatServer</server>
                     <url>http://roadshowtomcatserver:8080/manager/text/</url>
+					<path>/RoadShow-RC</path>
                     <update>true</update>
                 </configuration>
             </plugin>
