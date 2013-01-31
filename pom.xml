@@ -131,7 +131,7 @@
 				            <server>RoadShow-TomcatServer</server>
 				            <url>http://roadshowtomcatserver:8080/manager/text/</url>
 							<path>/RoadShow</path>
-							<warDirectory>target/</warDirectory>
+							<warFile>${project.build.directory}/${project.build.finalName}</warFile>
 				            <update>true</update>                    
 				        </configuration>
 				    </plugin>
