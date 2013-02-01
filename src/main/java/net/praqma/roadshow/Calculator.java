@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import net.praqma.roadshow.model.CalculatorModel;
 import net.praqma.roadshow.model.CalculatorModelImpl;
 
@@ -26,16 +25,15 @@ public class Calculator extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String valueString = request.getParameter("value");
         String resultString = request.getParameter("result");
 
-        HttpSession session = request.getSession(true);
         double result = 0;
         if (resultString != null && !resultString.isEmpty()) {
             result = Double.parseDouble(resultString);
@@ -43,32 +41,16 @@ public class Calculator extends HttpServlet {
 
         Map parameters = request.getParameterMap();
 
-        if (valueString != null && !valueString.isEmpty() && (!parameters.containsKey("store") || !parameters.containsKey("load"))) {
+        if (valueString != null && !valueString.isEmpty()) {
             double value = Double.parseDouble(valueString);
             if (parameters.containsKey("plus")) {
                 result = model.add(result, value).doubleValue();
-            } else if (parameters.containsKey("minus")) {
-                result = model.subtract(result, value).doubleValue();
-            } else if (parameters.containsKey("divide")) {
-                result = model.divide(result, value).doubleValue();
-            } else if (parameters.containsKey("multiply")) {
-                result = model.multiply(result, value).doubleValue();
             }
-
             request.setAttribute("value", result);
             RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
             view.forward(request, response);
 
-        } else {
-            if (parameters.containsKey("store")) {
-                session.setAttribute("storedValue", result);
-            } else if (parameters.containsKey("load")) {
-                Double val = (Double) session.getAttribute("storedValue");
-                if (val != null) {
-                    request.setAttribute("value", val);
-                }
-
-            }
+        } else {            
             RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
             view.forward(request, response);
         }
