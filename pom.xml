@@ -24,7 +24,7 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>2.4</version>
                     <configuration>
-                    <releaseProfiles>release</releaseProfiles>
+                    <!--  <releaseProfiles>release</releaseProfiles> -->
                         <goals>deploy tomcat7:deploy</goals>
 <!--                                                <goals>deploy tomcat7:deploy -Prelease</goals> -->
                     </configuration>
