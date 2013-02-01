@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.praqma.roadshow</groupId>
     <artifactId>RoadShow</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.17-SNAPSHOT</version>
     
     <packaging>war</packaging>
     <properties>
@@ -20,10 +20,13 @@
                     <version>2.0</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
+                    <version>2.4</version>
                     <configuration>
-                    <!--<releaseProfiles>release</releaseProfiles>-->
-                        <goals>tomcat7:deploy -Prelease</goals>
+                    <!--  <releaseProfiles>release</releaseProfiles> -->
+                        <goals>deploy tomcat7:deploy</goals>
+<!--                                                <goals>deploy tomcat7:deploy -Prelease</goals> -->
                     </configuration>
                 </plugin>
             </plugins>
@@ -92,9 +95,35 @@
                         <include>net/praqma/roadshow/unit/*.java</include>
                     </includes>
                 </configuration>     
-            </plugin>      
+            </plugin>  
+            <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.8.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>javadoc</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
         </plugins>
     </build>
+    
+    <distributionManagement>
+        <repository>
+            <id>ubuntu</id>
+            <name>ubuntu-releases</name>
+            <url>http://roadshowartifactory:8081/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>ubuntu</id>
+            <name>ubuntu-snapshots</name>
+            <url>http://roadshowartifactory:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+	</distributionManagement>
     
     <dependencies>
         <dependency>
@@ -122,6 +151,23 @@
     </dependencies>
 
     <profiles>
+        <profile>
+            <id>rel</id>
+			<activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation> 
+            <build>
+				<plugins>
+					<plugin>
+					    <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.4</version>
+                    </plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
             <id>release</id>
 			<activation>
@@ -327,19 +373,6 @@
                         </configuration>
                     </plugin>
                     
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.8.1</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>javadoc</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                                         
                 </plugins>
             </build>
@@ -347,8 +380,9 @@
     </profiles>
 
     <scm>
-        <connection>scm:git:https://github.com/Praqma/RoadShow.git</connection>
-        <developerConnection>scm:git:https://github.com/Praqma/RoadShow.git</developerConnection>
-        <url>https://github.com/Praqma/RoadShow.git</url>
-    </scm>
+        <connection>scm:git:https://github.com/Praqma/RoadShow-stable.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow-stable.git</developerConnection>
+        <url>https://github.com/Praqma/RoadShow-stable.git</url>
+      <tag>RoadShow-0.0.13</tag>
+  </scm>
 </project>

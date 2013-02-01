@@ -1,32 +1,14 @@
 RoadShow
 ========
+This is the source for the continuous delivery road show.
 
-# Selenium
-## Runing selenium remote control server
+# Repositories
+We use two repositories for our show case that includes pretested commits.
 
-1. Download the selenium rc server http://seleniumhq.org/download/
+## RoadShow
+* https://github.com/Praqma/RoadShow
+"RoadShow" is the integration repository is where we push changes, and if validated they end up in the RoadShow-stable repository (https://github.com/Praqma/RoadShow-stable)
 
-2. Start the server. `java -jar <path_to>/selenium-server-standalone-<version>.jar`.
-More details can be found here
-http://seleniumhq.org/docs/03_webdriver.jsp#running-standalone-selenium-server-for-use-with-remotedrivers
-
-4. Run the selenium rc junit tests.
-
-Create selenium RC tests.
-
-## Creating Selenium RC test case
-
-To create a test using the selenium IDE for firefox. Record the test and export it as a java remote control test case.
-
-# Server stuff
-Setup your hostfile for these servers (ip-adresses may vary - use your own)
-
-10.10.1.129   roadshowtomcatserver
-
-10.10.1.129   roadshowseleniumserver
-
-10.10.1.129   roadshowbuildslave
-
-10.10.1.133   roadshowjenkins
-
-10.10.1.133   roadshowartifactory
+## RoadShow stable
+* (https://github.com/Praqma/RoadShow-stable
+"RoadShow-stable" is where validated changes ends if they can be verified to a certain level.

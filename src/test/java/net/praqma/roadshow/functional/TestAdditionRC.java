@@ -12,13 +12,13 @@ public class TestAdditionRC {
 
 	@Before
 	public void setUp() throws Exception {        
-		selenium = new DefaultSelenium("roadshowseleniumserver", 4444, "*firefox", "http://roadshowtomcatserver:8080/");
+		selenium = new DefaultSelenium("roadshowseleniumserver", 44444, "*firefox", "http://roadshowtomcatserver:8080/");
 		selenium.start();
 	}
 
 	@Test
 	public void testAddition() throws Exception {
-		selenium.open("/RoadShow/Calculator");
+		selenium.open("/RoadShow-RC/Calculator");
 		selenium.type("name=value", "2");
 		selenium.click("name=plus");
 		selenium.waitForPageToLoad("30000");
@@ -30,7 +30,7 @@ public class TestAdditionRC {
 
     @Test
 	public void testMultiplication() throws Exception {
-		selenium.open("/RoadShow/Calculator");
+		selenium.open("/RoadShow-RC/Calculator");
 		selenium.type("name=value", "7");
 		selenium.click("name=multiply");
 		selenium.waitForPageToLoad("30000");
@@ -42,7 +42,7 @@ public class TestAdditionRC {
     
     @Test
 	public void testSubtract() throws Exception {
-		selenium.open("/RoadShow/Calculator");
+		selenium.open("/RoadShow-RC/Calculator");
 		selenium.type("name=value", "7");
 		selenium.click("name=multiply");
 		selenium.waitForPageToLoad("30000");
