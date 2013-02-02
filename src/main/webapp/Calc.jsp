@@ -11,16 +11,10 @@
 
 <body>
 	<form method="GET" action="Calculator">
-        <input type="text" name="value" value="<%if(request.getParameter("load") != null && request.getSession().getAttribute("storedValue") != null){out.print(request.getSession().getAttribute("storedValue"));}%>"/>
-        <button class="btn" type="submit" name="load">load</button>
-        <button class="btn" type="submit" name="store">store</button>
+        <input type="text" name="value"/>
 		<button class="btn" type="submit" name="plus">+</button>
-		<button class="btn" type="submit" name="minus">-</button>
-        <button class="btn" type="submit" name="divide">/</button>
-        <button class="btn" type="submit" name="multiply">*</button>
-        <button class="btn" type="submit" name="modulo">%</button>
 		<br>
-        <input type="text" name="result" readonly="readonly" value="<%if(request.getAttribute("value") != null && request.getParameter("load") == null){out.print(request.getAttribute("value"));} %>">
+        <input type="text" name="result" readonly="readonly" value="<%if(request.getAttribute("value") != null){out.print(request.getAttribute("value"));} %>">
 	</form>
 	<br>
 </body>
