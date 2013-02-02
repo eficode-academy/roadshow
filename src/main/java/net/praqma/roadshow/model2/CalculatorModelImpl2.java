@@ -1,7 +1,7 @@
 package net.praqma.roadshow.model2;
 
 public class CalculatorModelImpl2 implements CalculatorModel2 {
-
+    /*
     private Number storeValue;
 
     @Override
@@ -119,4 +119,5 @@ public class CalculatorModelImpl2 implements CalculatorModel2 {
 
         return true;
     }
+    */
 }
