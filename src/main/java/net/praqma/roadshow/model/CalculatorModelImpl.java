@@ -44,7 +44,7 @@ public class CalculatorModelImpl implements CalculatorModel {
     /**
      * Method solving Task 1
      * @param numbers
-     * @return 
+     * @return returns a result of the multiplication
      */
     @Override
     public Number multiply(Number... numbers) {

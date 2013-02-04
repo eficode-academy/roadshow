@@ -7,7 +7,7 @@
 <script type="text/javascript" src="js/calculator_js.js"></script>
 <title>Roadshow</title>
 </head>
-<h3>Calculator v. ${version}</h3>
+<h3>Calculator v. ${project.version}</h3>
 
 <body>
 	<form method="GET" action="Calculator">
