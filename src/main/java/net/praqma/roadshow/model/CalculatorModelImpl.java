@@ -40,8 +40,26 @@ public class CalculatorModelImpl implements CalculatorModel {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+
+    /**
+     * Method solving Task 1
+     * @param numbers
+     * @return returns a result of the multiplication
+     */
     @Override
     public Number multiply(Number... numbers) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        double res = 0d;
+        if (!checkOperands(numbers)) {
+            return res;
+        } else {
+            for (int i = 0; i < numbers.length; i++) {
+                if (i == 0) {
+                    res = numbers[i].doubleValue();
+                } else {
+                    res *= numbers[i].doubleValue();
+                }
+            }
+        }
+        return res;
     }
 }

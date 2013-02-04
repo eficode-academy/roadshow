@@ -7,12 +7,14 @@
 <script type="text/javascript" src="js/calculator_js.js"></script>
 <title>Roadshow</title>
 </head>
-<h3>Calculator v. ${version}</h3>
+<h3>Calculator v. ${project.version}</h3>
 
 <body>
 	<form method="GET" action="Calculator">
         <input type="text" name="value"/>
 		<button class="btn" type="submit" name="plus">+</button>
+        <!-- Soloution line for Task 1 -->
+        <button class="btn" type="submit" name="multiply">*</button>
 		<br>
         <input type="text" name="result" readonly="readonly" value="<%if(request.getAttribute("value") != null){out.print(request.getAttribute("value"));} %>">
 	</form>
