@@ -13,8 +13,7 @@
 	<form method="GET" action="Calculator">
         <input type="text" name="value"/>
 		<button class="btn" type="submit" name="plus">+</button>
-        <!-- Soloution line for Task 1 -->
-        <button class="btn" type="submit" name="multiply">*</button>
+        <button class="btn" type="submit" name="minus">-</button>
 		<br>
         <input type="text" name="result" readonly="readonly" value="<%if(request.getAttribute("value") != null){out.print(request.getAttribute("value"));} %>">
 	</form>

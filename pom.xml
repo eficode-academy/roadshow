@@ -4,7 +4,6 @@
     <artifactId>RoadShow</artifactId>
     <version>0.0.17</version>
     
-
     <packaging>war</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -310,51 +309,7 @@
                         <configuration>
                             <linkXRef>true</linkXRef>
                         </configuration>
-                    </plugin>
-                    
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-pmd-plugin</artifactId>
-                        <version>2.7.1</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>pmd</goal>
-                                    <goal>cpd</goal>
-                                </goals>
-                                <!-- <inherited>false</inherited> <configuration> </configuration> -->
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <linkXref>true</linkXref>
-                            <sourceEncoding>utf-8</sourceEncoding>
-                            <minimumTokens>10</minimumTokens>
-                            <targetJdk>1.6</targetJdk>
-                            <format>xml</format>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>findbugs-maven-plugin</artifactId>
-                        <version>2.5.2</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>findbugs</goal>
-                                </goals>
-                                <!-- <inherited>false</inherited> <configuration> </configuration> -->
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <linkXRef>true</linkXRef>
-                            <xmlOutput>true</xmlOutput>
-                            <!-- Optional directory to put findbugs xdoc xml report -->
-                            <xmlOutputDirectory>target/site</xmlOutputDirectory>
-                        </configuration>
-                    </plugin>    
+                    </plugin>  
                 </plugins>
             </build>
         </profile>
@@ -364,7 +319,5 @@
         <connection>scm:git:https://github.com/Praqma/RoadShow-stable.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow-stable.git</developerConnection>
         <url>https://github.com/Praqma/RoadShow-stable.git</url>
-        <!-- <tag>RoadShow-0.0.13</tag> -->
-    <tag>RoadShow-0.0.17</tag>
   </scm>
 </project>
