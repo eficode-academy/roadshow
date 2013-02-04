@@ -23,9 +23,10 @@ public class TestCalculatorModel {
 	 	assertEquals(expectedResult,number.doubleValue(), 0d);	 	
 	}
     
-    @Test(expected=UnsupportedOperationException.class)
+    @Test
     public void multiplyTest() {
-        Number number = model.multiply(new Double(2.5), new Integer(5));
+        Number number = model.multiply(expectedResult, 2);
+        assertEquals(expectedResult*2,number.doubleValue(), 0d);		
     }
     
     @Test(expected=UnsupportedOperationException.class)

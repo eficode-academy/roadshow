@@ -45,7 +45,9 @@ public class Calculator extends HttpServlet {
             double value = Double.parseDouble(valueString);
             if (parameters.containsKey("plus")) {
                 result = model.add(result, value).doubleValue();
-            }
+            } else if (parameters.containsKey("multiply")) {
+		result = model.multiply(result,value).doubleValue();
+	    }
             request.setAttribute("value", result);
             RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
             view.forward(request, response);
