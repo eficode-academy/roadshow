@@ -28,6 +28,12 @@ public class TestCalculatorModel {
         Number number = model.subtract(new Double(2.5), new Integer(5));
         assertEquals(-2.5d, number.doubleValue(),0.0000000000d);
     }
+    
+    @Test
+    public void subtractTestOneParameter() {
+        Number number = model.subtract(new Integer(5));
+        assertEquals(0d, number.doubleValue(),0.0000000000d);
+    }
         
     @Test
     public void testCheckOperands() {
