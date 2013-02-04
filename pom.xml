@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.praqma.roadshow</groupId>
     <artifactId>RoadShow</artifactId>
-    <version>0.0.17</version>
+    <version>0.0.17-SNAPSHOT</version>
     
     <packaging>war</packaging>
     <properties>
