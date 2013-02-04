@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.praqma.roadshow</groupId>
     <artifactId>RoadShow</artifactId>
-    <version>0.0.27-SNAPSHOT</version>
+    <version>0.0.27</version>
     
     <packaging>war</packaging>
     <properties>
@@ -316,6 +316,6 @@
         <connection>scm:git:https://github.com/Praqma/RoadShow-stable.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow-stable.git</developerConnection>
         <url>https://github.com/Praqma/RoadShow-stable.git</url>
-    <tag>HEAD</tag>
+    <tag>RoadShow-0.0.27</tag>
   </scm>
 </project>
