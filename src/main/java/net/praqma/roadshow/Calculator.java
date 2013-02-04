@@ -34,7 +34,7 @@ public class Calculator extends HttpServlet {
         String valueString = request.getParameter("value");
         String resultString = request.getParameter("result");
 
-        double result = 0;
+        Double result = null;
         if (resultString != null && !resultString.isEmpty()) {
             result = Double.parseDouble(resultString);
         }
@@ -42,13 +42,14 @@ public class Calculator extends HttpServlet {
         Map parameters = request.getParameterMap();
 
         if (valueString != null && !valueString.isEmpty()) {
-            double value = Double.parseDouble(valueString);
+            Double value = Double.parseDouble(valueString);
             if (parameters.containsKey("plus")) {
                 result = model.add(result, value).doubleValue();
+            } else if (parameters.containsKey("multiply")) {
+                result = model.multiply(result, value).doubleValue();
             } else if (parameters.containsKey("minus")) {
                 result = model.subtract(result, value).doubleValue();
-            }
-            
+            }            
             request.setAttribute("value", result);
             RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
             view.forward(request, response);

@@ -31,6 +31,21 @@ public class CalculatorModelImpl implements CalculatorModel {
         }
         return res;
     }
+    
+    @Override
+    public Number multiply(Number... numbers) {
+        double res = 1d;
+        for (int i = 0; i < numbers.length; i++) {
+            if(numbers[i] == null && i==0) {
+                continue;
+            } else if(numbers[i].doubleValue() == 0d && i==0) {
+                return 0d;
+            } else {
+                res *= numbers[i].doubleValue();
+            }              
+        }
+        return res;
+    }
 
     public boolean checkOperands(final Number... number) {
         if (number == null || number.length < 2) {
