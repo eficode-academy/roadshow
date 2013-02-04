@@ -24,19 +24,9 @@ public class TestCalculatorModel {
 	}
     
     @Test
-    public void multiplyTest() {
-        Number number = model.multiply(expectedResult, 2);
-        assertEquals(expectedResult*2,number.doubleValue(), 0d);		
-    }
-    
-    @Test(expected=UnsupportedOperationException.class)
-    public void divisionTest() {
-        Number number = model.divide(new Double(2.5), new Integer(5));
-    }
-    
-    @Test(expected=UnsupportedOperationException.class)
     public void subtractTest() {
         Number number = model.subtract(new Double(2.5), new Integer(5));
+        assertEquals(-7.5d, number.doubleValue(),0.0000000000d);
     }
         
     @Test

@@ -27,20 +27,16 @@ public class TestAdditionRC {
 		assertEquals("5.0", selenium.getValue("name=result"));
 	}
     
-       /**
-     * Task 1 Solution method
-     * @throws Exception 
-     */
     @Test
-	public void testMultiplication() throws Exception {
+	public void testSubtract() throws Exception {
 		selenium.open("/RoadShow-RC/Calculator");
 		selenium.type("name=value", "7");
-		selenium.click("name=multiply");
+		selenium.click("name=plus");
 		selenium.waitForPageToLoad("30000");
 		selenium.type("name=value", "6");
-		selenium.click("name=multiply");
+		selenium.click("name=minus");
 		selenium.waitForPageToLoad("30000");		
-		assertEquals("42.0", selenium.getValue("name=result"));
+		assertEquals("1.0", selenium.getValue("name=result"));
 	}
     
 	@After
