@@ -371,9 +371,7 @@
                             <!-- Optional directory to put findbugs xdoc xml report -->
                             <xmlOutputDirectory>target/site</xmlOutputDirectory>
                         </configuration>
-                    </plugin>
-                    
-                                        
+                    </plugin>    
                 </plugins>
             </build>
         </profile>
@@ -383,6 +381,6 @@
         <connection>scm:git:https://github.com/Praqma/RoadShow-stable.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow-stable.git</developerConnection>
         <url>https://github.com/Praqma/RoadShow-stable.git</url>
-      <tag>RoadShow-0.0.13</tag>
+        <!-- <tag>RoadShow-0.0.13</tag> -->
   </scm>
 </project>
