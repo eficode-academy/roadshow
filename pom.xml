@@ -312,29 +312,6 @@
                     </plugin>
                     
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-pmd-plugin</artifactId>
-                        <version>2.7.1</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>pmd</goal>
-                                    <goal>cpd</goal>
-                                </goals>
-                                <!-- <inherited>false</inherited> <configuration> </configuration> -->
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <linkXref>true</linkXref>
-                            <sourceEncoding>utf-8</sourceEncoding>
-                            <minimumTokens>10</minimumTokens>
-                            <targetJdk>1.6</targetJdk>
-                            <format>xml</format>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>findbugs-maven-plugin</artifactId>
                         <version>2.5.2</version>
