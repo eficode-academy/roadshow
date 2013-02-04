@@ -309,28 +309,7 @@
                         <configuration>
                             <linkXRef>true</linkXRef>
                         </configuration>
-                    </plugin>
-                    
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>findbugs-maven-plugin</artifactId>
-                        <version>2.5.2</version>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>findbugs</goal>
-                                </goals>
-                                <!-- <inherited>false</inherited> <configuration> </configuration> -->
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <linkXRef>true</linkXRef>
-                            <xmlOutput>true</xmlOutput>
-                            <!-- Optional directory to put findbugs xdoc xml report -->
-                            <xmlOutputDirectory>target/site</xmlOutputDirectory>
-                        </configuration>
-                    </plugin>    
+                    </plugin>  
                 </plugins>
             </build>
         </profile>
@@ -340,6 +319,5 @@
         <connection>scm:git:https://github.com/Praqma/RoadShow-stable.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/Praqma/RoadShow-stable.git</developerConnection>
         <url>https://github.com/Praqma/RoadShow-stable.git</url>
-        <!-- <tag>RoadShow-0.0.13</tag> -->
   </scm>
 </project>
