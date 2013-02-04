@@ -17,15 +17,15 @@ We use two repositories for our show case that includes pretested commits.
 
 ### Git
 
-git clone <URL>
-cd RoadShow
-... work
-git add <Files>
-git commit
-git pull stable master
-merge ???
-git push origin master
-git remote --add stable <URL of the stable repo>
+git clone <URL>  
+cd RoadShow  
+... work  
+git add <Files>  
+git commit  
+git pull stable master  
+merge ???  
+git push origin master  
+git remote --add stable <URL of the stable repo>  
 
 ### Maven
 
