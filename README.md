@@ -12,3 +12,21 @@ We use two repositories for our show case that includes pretested commits.
 ## RoadShow stable
 * (https://github.com/Praqma/RoadShow-stable
 "RoadShow-stable" is where validated changes ends if they can be verified to a certain level.
+
+# Need to know commands
+
+### Git
+
+git clone <URL>
+cd RoadShow
+... work
+git add <Files>
+git commit
+git pull stable master
+merge ???
+git push origin master
+git remote --add stable <URL of the stable repo>
+
+### Maven
+
+mvn clean package
