@@ -371,9 +371,7 @@
                             <!-- Optional directory to put findbugs xdoc xml report -->
                             <xmlOutputDirectory>target/site</xmlOutputDirectory>
                         </configuration>
-                    </plugin>
-                    
-                                        
+                    </plugin>    
                 </plugins>
             </build>
         </profile>
