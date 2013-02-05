@@ -26,7 +26,7 @@ public class TestCalculatorModel {
     @Test
 	public void addTestOneParameter() {	
 	 	Number number = model.add(new Double(2.5));
-	 	assertEquals(0,number.doubleValue(), 0d);	 	
+	 	assertEquals(0,number.doubleValue(), 2.5d);	 	
 	}
     
     @Test
