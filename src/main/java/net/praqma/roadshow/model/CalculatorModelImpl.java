@@ -31,7 +31,6 @@ public class CalculatorModelImpl implements CalculatorModel {
         return res;
     }
     
-    //TODO:I need to implement a unit test for this method
     @Override
     public Number multiply(Number... numbers) {
         double res = 1d;
