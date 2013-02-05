@@ -12,7 +12,7 @@
 <body>
 	<form method="GET" action="Calculator">
         <input type="text" name="value"/>
-        <button class="btn" type="submit" name="multiplication">*</button>
+        <button class="btn" type="submit" name="multiply">*</button>
 		<button class="btn" type="submit" name="plus">+</button>
         <button class="btn" type="submit" name="minus">-</button>
 		<br>
