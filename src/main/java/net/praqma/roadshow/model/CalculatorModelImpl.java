@@ -5,13 +5,12 @@ public class CalculatorModelImpl implements CalculatorModel {
     @Override
     public Number add(final Number... numbers) {
         double res = 0d;
-        if (!checkOperands(numbers)) {
-            return res;
-        } else {
-            for (Number number : numbers) {
+        for (Number number : numbers) {
+            if(number != null) {
                 res += number.doubleValue();
             }
         }
+
         return res;
     }
     
