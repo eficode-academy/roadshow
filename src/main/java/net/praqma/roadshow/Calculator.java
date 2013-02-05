@@ -45,8 +45,6 @@ public class Calculator extends HttpServlet {
             Double value = Double.parseDouble(valueString);
             if (parameters.containsKey("plus")) {
                 result = model.add(result, value).doubleValue();
-            } else if (parameters.containsKey("multiply")) {
-                result = model.multiply(result, value).doubleValue();
             } else if (parameters.containsKey("minus")) {
                 result = model.subtract(result, value).doubleValue();
             }            

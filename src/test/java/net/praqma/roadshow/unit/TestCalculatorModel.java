@@ -40,19 +40,7 @@ public class TestCalculatorModel {
         Number number = model.subtract(new Integer(5));
         assertEquals(0d, number.doubleValue(),0.0000000000d);
     }
-    
-    @Test
-    public void testMultiplyPossiblePermutaions() {
-        Double numberZero = model.multiply(0d,new Double(5.0d)).doubleValue();
-        assertEquals(0d,numberZero,0d);
-        
-        Double numberOrigin = model.multiply(null, new Double(5.0d)).doubleValue();
-        assertEquals(5d, numberOrigin, 0d);
-        
-        Double numberBothOk = model.multiply(new Double(2),new Double(5)).doubleValue();
-        assertEquals(10d, numberBothOk, 0d);        
-    }
-        
+            
     @Test
     public void testCheckOperands() {
         Number[] illegaArray = new Number[2];
