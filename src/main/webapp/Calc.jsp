@@ -12,9 +12,9 @@
 <body>
 	<form method="GET" action="Calculator">
         <input type="text" name="value"/>
-        <button class="btn" type="submit" name="multiply">*</button>
-		<button class="btn" type="submit" name="plus">+</button>
-        <button class="btn" type="submit" name="minus">-</button>
+        <button class="btn btn-success" type="submit" name="multiply">*</button>
+		<button class="btn btn-inverse" type="submit" name="plus">+</button>
+        <button class="btn btn-primary" type="submit" name="minus">-</button>
 		<br>
         <input type="text" name="result" readonly="readonly" value="<%if(request.getAttribute("value") != null){out.print(request.getAttribute("value"));} %>">
 	</form>
