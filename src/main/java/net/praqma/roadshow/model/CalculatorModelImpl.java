@@ -2,7 +2,6 @@ package net.praqma.roadshow.model;
 
 public class CalculatorModelImpl implements CalculatorModel {
 
-    //TODO: Implement unit test
     @Override
     public Number multiply(Number... numbers) {
         double res = 1d;
