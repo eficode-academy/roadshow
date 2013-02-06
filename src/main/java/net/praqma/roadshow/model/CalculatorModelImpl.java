@@ -2,6 +2,22 @@ package net.praqma.roadshow.model;
 
 public class CalculatorModelImpl implements CalculatorModel {
 
+    //TODO: Implement unit test
+    @Override
+    public Number multiply(Number... numbers) {
+        double res = 1d;
+        for (int i = 0; i < numbers.length; i++) {
+            if(numbers[i] == null && i==0) {
+                continue;
+            } else if(numbers[i].doubleValue() == 0d && i==0) {
+                return 0d;
+            } else {
+                res *= numbers[i].doubleValue();
+            }              
+        }
+        return res;
+    }
+    
     @Override
     public Number add(final Number... numbers) {
         double res = 0d;
