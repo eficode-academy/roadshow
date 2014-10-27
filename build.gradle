@@ -33,3 +33,6 @@ test {
         includeTestsMatching "net.praqma.roadshow.unit.*"
    }
 }
+checkstyle {
+    ignoreFailures = true
+}
