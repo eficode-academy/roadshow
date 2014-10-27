@@ -1,6 +1,7 @@
 package net.praqma.roadshow;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import net.praqma.roadshow.model.CalculatorModelImpl;
  * Servlet implementation class Calculator
  */
 @WebServlet(urlPatterns = {"/Calculator"}, description = "This is a small Calculator App used for our roadshow", displayName = "Calulator Demo", name = "Calculator")
-public class Calculator extends HttpServlet {
+public class Calculator extends HttpServlet implements Serializable{
 
     //FIXME
     //private static final long serialVersionUID = 1L;
@@ -23,6 +24,8 @@ public class Calculator extends HttpServlet {
 
     public Calculator() {
         super();
+        String dummy = new String();
+        System.out.println(dummy.valueOf(42));
     }
 
     @Override
