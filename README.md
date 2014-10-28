@@ -27,6 +27,8 @@ merge ???
 git push origin master  
 git remote --add stable <URL of the stable repo>  
 
-### Maven
+### Gradle
 
-mvn clean package
+gradle clean build
+or 
+./gradlew clean build
