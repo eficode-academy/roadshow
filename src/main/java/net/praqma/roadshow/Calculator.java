@@ -53,12 +53,12 @@ public class Calculator extends HttpServlet implements Serializable{
                 result = model.multiply(result, value).doubleValue();
             } else if (parameters.containsKey("minus")) {
                 result = model.subtract(result, value).doubleValue();
-            }            
+            }
             request.setAttribute("value", result);
             RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
             view.forward(request, response);
 
-        } else {            
+        } else {
             RequestDispatcher view = request.getRequestDispatcher("/Calc.jsp");
             view.forward(request, response);
         }

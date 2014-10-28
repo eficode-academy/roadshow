@@ -8,7 +8,7 @@ document.onkeypress = function(e) {
     var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
     if (charCode) {
         //alert("Character typed: " + String.fromCharCode(charCode));
-        
+
     }
 };
 */

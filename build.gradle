@@ -12,11 +12,10 @@ description = """"""
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
-
-
 repositories {
      maven { url "http://repo.maven.apache.org/maven2" }
 }
+
 dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:'2.26.0'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version:'2.28.0'
@@ -33,9 +32,12 @@ test {
         includeTestsMatching "net.praqma.roadshow.unit.*"
    }
 }
+
 checkstyle {
     ignoreFailures = true
 }
+
 findbugs {
+	toolVersion = "2.0.1"
     ignoreFailures = true
 }

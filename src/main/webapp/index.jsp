@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Praqma roadshow</title>
     </head>
-    
+
     <body>
         <h1>Welcome</h1>
         <p>
@@ -20,7 +20,7 @@
                     <li>Extend model and model interface to handle load/store functionality</li>
                     <li>Implement an equation display</li>
                 </ol>
-            
+
                 <h2>Other stuff you could do</h2>
                 <ol>
                     <li>Introduce additional functionality, square root, store result for later use, modulus etc..</li>
@@ -28,7 +28,7 @@
                     <li>Make the user interface respond to keyboard input (plus, minus, divide, multiply)</li>
                     <li>Make the calculator able calculate with imaginary numbers</li>
                     <li>Improve the user interface with better layout and prettier buttons etc.. for example using Twitter Bootstrap templates</li>
-                </ol>            
+                </ol>
             </div>
             <img src="images/eq_display.png" style="float:left; margin-left:20px;"/>
          </div>
@@ -40,6 +40,6 @@
                 <li>Your implementation must have 0 test failures</li>
                 <li>You must have fund implementing the solution!</li>
             </ol>
-        </div>	
+        </div>
     </body>
 </html>
