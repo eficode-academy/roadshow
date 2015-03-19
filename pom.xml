@@ -253,7 +253,7 @@
                 <configuration>
                     <server>RoadShow-TomcatServer</server>
                     <url>http://roadshowtomcatserver:8080/manager/text/</url>
-                    <path>/RoadShow-RC</path>
+                    <path>/${env.JOB_NAME}-RoadShow-RC</path>
                     <update>true</update>
                 </configuration>
             </plugin>
@@ -479,7 +479,7 @@
                         <configuration>
                             <server>RoadShow-TomcatServer</server>
                             <url>http://roadshowtomcatserver:8080/manager/text/</url>
-                            <path>/RoadShow</path>
+                            <path>/${env.JOB_NAME}-RoadShow-REL</path>
                             <update>true</update>
                         </configuration>
                     </plugin>
