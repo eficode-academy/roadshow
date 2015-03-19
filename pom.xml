@@ -11,7 +11,19 @@
     </properties>
 
     <build>
+
         <plugins>
+                                <!--
+                Use java 1.6 as this is an old demo setup for the RoadShow app.              
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
             <!-- 
             Enabled us to use custom build numbers for the plugin and
             relate them to a git SHA. Very usefull for snapshots and non-releases
@@ -62,12 +74,6 @@
             .txt and .xml reports for test results.
             Reports can later be converted to html reports by the 'maven-surefire-report-plugin' 
             -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.17</version>
-            </plugin>
-            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
