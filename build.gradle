@@ -4,6 +4,7 @@ apply plugin: 'checkstyle'
 apply plugin: 'jacoco'
 apply plugin: 'findbugs'
 apply plugin: 'maven-publish'
+apply plugin: 'jetty'
 
 group = 'net.praqma.roadshow'
 version = '0.0.34-SNAPSHOT'
@@ -38,12 +39,36 @@ test {
    }
 }
 
+task updateTestResultsTimestamps {
+    doLast {
+        def timestamp = System.currentTimeMillis()
+        fileTree(dir: "${buildDir}/test-results/", include: "TEST*.xml").each {
+            it.lastModified = timestamp 
+        }
+    }
+}       
+
+stopPort = 4455
+stopKey = 'stop'
+
+task startApp(type: JettyRunWar) {
+    daemon = true
+}
+
+task functionalTest(type: Test) {
+    dependsOn startApp
+    filter {
+        includeTestsMatching "net.praqma.roadshow.functional.*"
+    }
+    finalizedBy jettyStop
+}
+
 checkstyle {
     ignoreFailures = true
 }
 
 findbugs {
-	toolVersion = "2.0.1"
+    toolVersion = "2.0.1"
     ignoreFailures = true
 }
 
