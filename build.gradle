@@ -1,8 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'checkstyle'
-apply plugin: "jacoco"
+apply plugin: 'jacoco'
 apply plugin: 'findbugs'
+apply plugin: 'maven-publish'
 
 group = 'net.praqma.roadshow'
 version = '0.0.34-SNAPSHOT'
@@ -12,8 +13,12 @@ description = """"""
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
+def repositoryUrl(name) {
+    "http://roadshowartifactory:8081/artifactory/${name}"
+}
+
 repositories {
-     maven { url "http://repo.maven.apache.org/maven2" }
+    jcenter()
 }
 
 dependencies {
@@ -41,3 +46,17 @@ findbugs {
 	toolVersion = "2.0.1"
     ignoreFailures = true
 }
+
+publishing {
+    repositories {
+        maven {
+            url repositoryUrl("snapshot")
+        }
+    }
+    publications {
+        roadShow(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
