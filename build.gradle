@@ -68,7 +68,7 @@ checkstyle {
 }
 
 findbugs {
-    toolVersion = "2.0.1"
+    toolVersion = "3.0.1"
     ignoreFailures = true
 }
 
