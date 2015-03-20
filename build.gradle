@@ -39,7 +39,13 @@ test {
    }
 }
 
-task updateTestResultsTimestamps {
+// Modified test task to use on Jenkins so test results
+// are seen as new, even though gradle is to smart to run
+// the tasks again. The Jenkins JUnit plugin fails the build
+// if test results are not new, eg. when building manually.
+task jenkinstest {
+		description "Same as test task, but renews timestamp on junit xml files. For use on Jenkins"
+		dependsOn test
     doLast {
         def timestamp = System.currentTimeMillis()
         fileTree(dir: "${buildDir}/test-results/", include: "TEST*.xml").each {
