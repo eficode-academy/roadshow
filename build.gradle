@@ -6,8 +6,17 @@ apply plugin: 'findbugs'
 apply plugin: 'maven-publish'
 apply plugin: 'jetty'
 
-group = 'net.praqma.roadshow'
+group = 'net.praqma.roadshow.buep' // FIXME - add your initials or github id here
 version = '0.0.34-SNAPSHOT'
+
+// FIXME - should test for blank also
+ext.artifactoryUrlAndPort = System.getenv("ARTIFACTORY_URL_AND_PORT") ?: "http://roadshowartifactory:8081/artifactory"
+//ext.tomcatUrlAndPort = System.getenv("TOMCAT_URL_AND_PORT") ?: "http://roadshowtomcatserver:8080/"
+ext.deployContext = System.getenv("DEPLOY_CONTEXT") ?: "RC" // should be either RC or REL
+ext.deployPath = System.getenv("DEPLOY_PATH") ?: String.format("RoadShow-%s", ext.deployContext) // should be set to RoadShow-yourinitial
+ext.appName = String.format("/%s/Calculator", ext.deployPath)
+
+
 
 description = """"""
 
@@ -15,7 +24,7 @@ sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
 def repositoryUrl(name) {
-    "http://roadshowartifactory:8081/artifactory/${name}"
+    ext.artifactoryUrlAndPort + "/${name}"
 }
 
 repositories {
