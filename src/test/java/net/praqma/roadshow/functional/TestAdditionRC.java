@@ -11,8 +11,6 @@ public class TestAdditionRC {
 	private Selenium selenium;
 		// These are set by the project configuration in build.gradle, so not checking for existense
     private static final String TOMCAT_URL_AND_PORT = System.getProperty("tomcatUrlAndPort");
-    private static final String DEPLOY_CONTEXT = System.getProperty("deployContext");
-    private static final String DEPLOY_PATH = System.getProperty("deployPath");
     private static final String APP_NAME = System.getProperty("appName");
     
 	@Before

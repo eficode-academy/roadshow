@@ -9,19 +9,22 @@ apply plugin: 'jetty'
 group = 'net.praqma.roadshow.buep' // FIXME - add your initials or github id here
 version = '0.0.34-SNAPSHOT'
 
-System.properties.artifactoryUrlAndPort = System.properties.artifactoryUrlAndPort ?: "http://roadshowartifactory:8081/artifactory"
-System.properties.tomcatUrlAndPort = System.properties.tomcatUrlAndPort ?: "http://roadshowtomcatserver:8080/"
-System.properties.deployContext = System.properties.deployContext ?: "RC" // should be either RC or REL
-System.properties.deployPath = System.properties.deployPath ?: String.format("RoadShow-%s", System.properties.deployContext) // should be set to RoadShow-yourinitial
-System.properties.appName = System.properties.appName ?: String.format("/%s/Calculator", System.properties.deployPath)
+ext {
+artifactoryUrlAndPort = System.properties.artifactoryUrlAndPort ?: "http://roadshowartifactory:8081/artifactory"
+tomcatUrlAndPort = System.properties.tomcatUrlAndPort ?: "http://roadshowtomcatserver:8080/"
+deployContext = System.properties.deployContext ?: "RC" // should be either RC or REL
+deployPath = System.properties.deployPath ?: String.format("RoadShow-%s", System.properties.deployContext) // should be set to RoadShow-yourinitial
+appName = System.properties.appName ?: String.format("/%s/Calculator", System.properties.deployPath)
+} 
 
-
-task printProps << {
-		println System.properties.artifactoryUrlAndPort
-		println System.properties.tomcatUrlAndPort
-		println System.properties.deployContext
-		println System.properties.deployPath
-		println System.properties.appName
+task printProps {
+		doLast {
+			println artifactoryUrlAndPort
+			println tomcatUrlAndPort
+			println deployContext
+			println deployPath
+			println appName
+		}
 }
 
 
@@ -75,6 +78,13 @@ stopKey = 'stop'
 
 task startApp(type: JettyRunWar) {
     daemon = true
+}
+
+task functionalTestTomcat(type: Test) {
+		systemProperties(appName: appName, tomcatUrlAndPort: tomcatUrlAndPort)
+    filter {
+        includeTestsMatching "net.praqma.roadshow.functional.*"
+    }
 }
 
 task functionalTest(type: Test) {
