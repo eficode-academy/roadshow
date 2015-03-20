@@ -80,8 +80,37 @@ publishing {
     }
     publications {
         roadShow(MavenPublication) {
-            from components.java
+            artifact war
         }
     }
 }
 
+configurations {
+  // Configuration for artifacts deployed to Tomcat
+  deployables
+}
+
+// display caching for snapshot version 
+configurations.deployables.resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+
+dependencies {
+  deployables "${group}:${name}:${version}"
+}
+
+// TODO too many hardcoded values
+
+task deploy(type: Copy) {
+  description "Retrieve the war from repository and deploy to Tomcat"
+  group "Web application"
+
+  from (configurations.deployables) { rename { "roadshow.war" } }
+  into '/tmp/tomcat/webapps'
+}
+
+task deployWar(type: Copy) {
+  description "Deploy the war to Tomcat"
+  group "Web application"
+
+  from (war) { rename { "roadshow.war" } }
+  into '/tmp/tomcat/webapps'
+}
