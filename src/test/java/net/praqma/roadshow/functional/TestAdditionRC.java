@@ -9,10 +9,11 @@ import org.junit.Test;
 
 public class TestAdditionRC {
 	private Selenium selenium;
-    private static final String TOMCAT_URL_AND_PORT = System.getenv("TOMCAT_URL_AND_PORT") != null ? System.getenv("TOMCAT_URL_AND_PORT") : "http://roadshowtomcatserver:8080/";
-    private static final String DEPLOY_CONTEXT = System.getenv("DEPLOY_CONTEXT") != null ? System.getenv("DEPLOY_CONTEXT") : "RC";
-    private static final String DEPLOY_PATH = StringUtils.isNotBlank(System.getenv("DEPLOY_PATH")) ? System.getenv("DEPLOY_PATH") : String.format("RoadShow-%s", DEPLOY_CONTEXT);
-    private static final String APP_NAME = String.format("/%s/Calculator", DEPLOY_PATH);
+		// These are set by the project configuration in build.gradle, so not checking for existense
+    private static final String TOMCAT_URL_AND_PORT = System.getProperty("tomcatUrlAndPort");
+    private static final String DEPLOY_CONTEXT = System.getProperty("deployContext");
+    private static final String DEPLOY_PATH = System.getProperty("deployPath");
+    private static final String APP_NAME = System.getProperty("appName");
     
 	@Before
 	public void setUp() throws Exception {

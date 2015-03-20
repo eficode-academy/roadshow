@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.praqma.roadshow</groupId>
+    <groupId>net.praqma.roadshow.buep</groupId> <!-- FIXME - write your github ID here, cant use var here -->
     <artifactId>RoadShow</artifactId>
     <version>0.0.35-SNAPSHOT</version>
 
@@ -8,6 +8,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- FIXME - describe this -->
+                <myGithubId>buep</myGithubId>
     </properties>
 
     <build>
@@ -253,7 +255,7 @@
                 <configuration>
                     <server>RoadShow-TomcatServer</server>
                     <url>http://roadshowtomcatserver:8080/manager/text/</url>
-                    <path>/${env.JOB_NAME}-RoadShow-RC</path>
+                    <path>/${myGithubId}/RoadShow-RC</path>
                     <update>true</update>
                 </configuration>
             </plugin>
@@ -479,7 +481,7 @@
                         <configuration>
                             <server>RoadShow-TomcatServer</server>
                             <url>http://roadshowtomcatserver:8080/manager/text/</url>
-                            <path>/${env.JOB_NAME}-RoadShow-REL</path>
+                            <path>/${myGithubId}/RoadShow</path>
                             <update>true</update>
                         </configuration>
                     </plugin>
