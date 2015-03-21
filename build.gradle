@@ -13,8 +13,8 @@ ext {
 artifactoryUrlAndPort = System.properties.artifactoryUrlAndPort ?: "http://roadshowartifactory:8081/artifactory"
 tomcatUrlAndPort = System.properties.tomcatUrlAndPort ?: "http://roadshowtomcatserver:8080/"
 deployContext = System.properties.deployContext ?: "RC" // should be either RC or REL
-deployPath = System.properties.deployPath ?: String.format("RoadShow-%s", System.properties.deployContext) // should be set to RoadShow-yourinitial
-appName = System.properties.appName ?: String.format("/%s/Calculator", System.properties.deployPath)
+deployPath = System.properties.deployPath ?: "RoadShow-${deployContext}" // should be set to RoadShow-yourinitial
+appName = System.properties.appName ?: "/${deployPath}/Calculator"
 } 
 
 task printProps {
@@ -34,7 +34,7 @@ sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
 def repositoryUrl(name) {
-    System.properties.artifactoryUrlAndPort + "/libs-${name}-local"
+    ext.artifactoryUrlAndPort + "/libs-${name}-local"
 }
 
 repositories {
