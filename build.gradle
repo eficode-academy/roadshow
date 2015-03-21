@@ -155,7 +155,7 @@ findbugs {
 publishing {
     repositories {
         maven {
-            url repositoryUrl("snapshot")
+            url deployContext == "REL" ? repositoryUrl("release") : repositoryUrl("snapshot")
         }
     }
     publications {
