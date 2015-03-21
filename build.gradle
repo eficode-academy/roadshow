@@ -5,7 +5,8 @@ apply plugin: 'jacoco'
 apply plugin: 'findbugs'
 apply plugin: 'maven-publish'
 apply plugin: 'jetty'
-
+apply plugin: 'pmd'
+apply plugin: 'jdepend'
 apply plugin: 'com.bmuschko.cargo'
 apply plugin: 'com.bmuschko.cargo-base'
 
@@ -13,7 +14,7 @@ apply plugin: 'com.bmuschko.cargo-base'
 // you must chose set a trainingUserName, which gives you your own deploy path on Tomcat
 // and your own artifact repository 
 
-ext.trainingUserName = 'buep' // it is a good idea to chose the same as your github id
+ext.trainingUserName = 'mytrainingusername' // it is a good idea to chose the same as your github id
 
 ext {
 artifactoryUrlAndPort = System.properties.artifactoryUrlAndPort ?: "http://roadshowartifactory:8081/artifactory"
@@ -29,7 +30,12 @@ buildNumber = System.properties.buildNumber ?: "SNAPSHOT"
 } 
 
 group = 'net.praqma.roadshow.buep' // FIXME - add your initials or github id here
-version = "0.0.38-${buildNumber}"
+
+ext.versionMajor = "0"
+ext.versionMinor = "0"
+ext.versionPatch = "40"
+
+version = "${versionMajor}.${versionMinor}.${versionPatch}-${buildNumber}"
 
 // https://github.com/ajoberstar/gradle-git/wiki
 import org.ajoberstar.grgit.*
@@ -142,8 +148,28 @@ tasks.addRule("Pattern: jenkins<TaskName>: Update timestamp of test output files
     }
   }
 }
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+}
+
+
+task staticAnalysis {
+	description 'Run all project defined static analysis checks on source and test code'
+	dependsOn jdependMain, jdependTest, pmdMain, pmdTest, checkstyleMain, checkstyleTest, findbugsMain, findbugsTest
+}
+
+pmd {
+	toolVersion = '5.1.1'
+	ignoreFailures = true
+}
+
+jdepend {
+	toolVersion = '2.9.1'
+	ignoreFailures = true
+}
 
 checkstyle {
+	toolVersion = '5.7'
     ignoreFailures = true
 }
 
