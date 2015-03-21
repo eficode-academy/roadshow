@@ -6,24 +6,49 @@ apply plugin: 'findbugs'
 apply plugin: 'maven-publish'
 apply plugin: 'jetty'
 
-group = 'net.praqma.roadshow.buep' // FIXME - add your initials or github id here
-version = '0.0.34-SNAPSHOT'
+apply plugin: 'com.bmuschko.cargo'
+apply plugin: 'com.bmuschko.cargo-base'
+
+// If you use this project for training and want to deploy to your Tomcat webapp
+// you must chose set a trainingUserName, which gives you your own deploy path on Tomcat
+// and your own artifact repository 
+
+ext.trainingUserName = 'buep' // it is a good idea to chose the same as your github id
 
 ext {
 artifactoryUrlAndPort = System.properties.artifactoryUrlAndPort ?: "http://roadshowartifactory:8081/artifactory"
 tomcatUrlAndPort = System.properties.tomcatUrlAndPort ?: "http://roadshowtomcatserver:8080/"
+
+appName = name
+
 deployContext = System.properties.deployContext ?: "RC" // should be either RC or REL
-deployPath = System.properties.deployPath ?: "RoadShow-${deployContext}" // should be set to RoadShow-yourinitial
-appName = System.properties.appName ?: "/${deployPath}/Calculator"
+trainingUserWebappDir = System.properties.trainingUserWebappDir ?: trainingUserName //
+deployPath = System.properties.deployPath ?: "${trainingUserWebappDir}/${appName}-${deployContext}"
+
+buildNumber = System.properties.buildNumber ?: "SNAPSHOT"
 } 
+
+group = 'net.praqma.roadshow.buep' // FIXME - add your initials or github id here
+version = "0.0.38-${buildNumber}"
+
+// https://github.com/ajoberstar/gradle-git/wiki
+import org.ajoberstar.grgit.*
+
+ext.gitRepo = Grgit.open(project.file('.'))
+ext.gitRepoUrl = gitRepo.remote.list().get(0).url
+ext.gitVersion = "${version}-${gitRepo.head().abbreviatedId}"
 
 task printProps {
 		doLast {
-			println artifactoryUrlAndPort
-			println tomcatUrlAndPort
-			println deployContext
-			println deployPath
-			println appName
+			println "App name: ${appName}"
+			println "Training user name: ${trainingUserName}"
+			println "Artifactory URL and port: ${artifactoryUrlAndPort}"
+			println "Tomcat URL and port:      ${tomcatUrlAndPort}"
+			println "Deploy context: ${deployContext}"
+			println "Deploy path: ${deployPath}"
+			println "Version: ${version}"
+			println "Git version: ${gitVersion}"
+			println "Git repo: ${gitRepoUrl}"
 		}
 }
 
@@ -37,8 +62,11 @@ def repositoryUrl(name) {
     ext.artifactoryUrlAndPort + "/libs-${name}-local"
 }
 
+
+
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -47,7 +75,16 @@ dependencies {
     compile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.0.1'
     compile group: 'junit', name: 'junit', version:'4.7'
 }
+buildscript {
+    repositories {
+        jcenter()
+    }
 
+    dependencies {
+        classpath 'com.bmuschko:gradle-cargo-plugin:2.0.3'
+    		classpath 'org.ajoberstar:gradle-git:1.1.0'
+    }
+}
 jacoco {
     toolVersion = "0.7.1.201405082137"
 }
@@ -66,7 +103,7 @@ task startApp(type: JettyRunWar) {
 }
 
 task functionalTestTomcat(type: Test) {
-		systemProperties(appName: appName, tomcatUrlAndPort: tomcatUrlAndPort)
+		//systemProperties(appName: appName, tomcatUrlAndPort: tomcatUrlAndPort)
     filter {
         includeTestsMatching "net.praqma.roadshow.functional.*"
     }
@@ -150,6 +187,32 @@ task deploy(type: Copy) {
   into '/tmp/tomcat/webapps'
 }
 
+
+// https://github.com/bmuschko/gradle-cargo-plugin
+cargo {
+    //containerId = 'tomcat7x'
+    containerId = 'tomcat8x'
+    //port = 8080
+		port = 49156
+    
+		deployable {
+        context = deployPath 
+    }
+
+    remote {
+        //hostname = '10.10.1.134'
+        //username = 'deployer'
+        //password = 'tomcat'
+				hostname = 'tomcat-f2d80255-1.buep.cont.tutum.io'
+        username = 'admin'
+        password = 'admin123'
+    }
+
+}
+
+
+
+
 task deployWar(type: Copy) {
   description "Deploy the war to Tomcat"
   group "Web application"
@@ -157,3 +220,30 @@ task deployWar(type: Copy) {
   from (war) { rename { "roadshow.war" } }
   into '/tmp/tomcat/webapps'
 }
+
+
+
+// gradle.org/docs/current/userguide/userguide_single.html#N103DE , see "7.2.3. Customizing the project"
+war {
+    manifest {
+        attributes 	'Implementation-AppName': appName,
+                   	'Implementation-TrainingUserName': trainingUserName,
+										'Implementation-DeployPath': deployPath,
+										'Implementation-Version': version,
+										'Implementation-GitVersion': gitVersion,
+										'Implementation-GitRepoUrl': gitRepoUrl
+    }
+}
+jar {
+    manifest {
+        attributes 	'Implementation-AppName': appName,
+                   	'Implementation-TrainingUserName': trainingUserName,
+										'Implementation-DeployPath': deployPath,
+										'Implementation-Version': version,
+										'Implementation-GitVersion': gitVersion,
+										'Implementation-GitRepoUrl': gitRepoUrl
+    }
+}
+
+
+
