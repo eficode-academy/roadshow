@@ -58,21 +58,6 @@ test {
    }
 }
 
-// Modified test task to use on Jenkins so test results
-// are seen as new, even though gradle is to smart to run
-// the tasks again. The Jenkins JUnit plugin fails the build
-// if test results are not new, eg. when building manually.
-task jenkinstest {
-		description "Same as test task, but renews timestamp on junit xml files. For use on Jenkins"
-		dependsOn test
-    doLast {
-        def timestamp = System.currentTimeMillis()
-        fileTree(dir: "${buildDir}/test-results/", include: "TEST*.xml").each {
-            it.lastModified = timestamp 
-        }
-    }
-}       
-
 stopPort = 4455
 stopKey = 'stop'
 
@@ -88,11 +73,37 @@ task functionalTestTomcat(type: Test) {
 }
 
 task functionalTest(type: Test) {
+    group 'verification'
+    description 'Execute Selenium tests'
+
     dependsOn startApp
     filter {
         includeTestsMatching "net.praqma.roadshow.functional.*"
     }
     finalizedBy jettyStop
+}
+
+// Create test tasks to use on Jenkins so test results
+// are seen as new, even though gradle is to smart to run
+// the tasks again. The Jenkins JUnit plugin fails the build
+// if test results are not new, eg. when building manually.
+tasks.addRule("Pattern: jenkins<TaskName>: Update timestamp of test output files.") { String taskName ->
+  if (taskName.startsWith('jenkins')) {
+    String s = taskName - 'jenkins'
+    Task testTask = tasks.findByName(s[0].toLowerCase() + s[1..-1])
+    // If the rest of the taskName identifies a Test task, then create new task to update timestamp of test output file. This is needed for Jenkins
+    if (testTask instanceof Test) {
+      tasks.create(taskName) {
+        dependsOn testTask
+        doLast {
+          def timestamp = System.currentTimeMillis()
+          fileTree(dir: "${buildDir}/test-results/", include: "TEST*.xml").each {
+            it.lastModified = timestamp 
+          }
+        }      
+      }
+    }
+  }
 }
 
 checkstyle {
