@@ -6,7 +6,7 @@ training classes around continuous delivery by Praqma.
 The project was earlier called [Praqma training RoadShow](https://github.com/praqma-training/roadshow), so there is a bit legacy and some hack, leaving room for exercises :-)
 
 
-## Short summary....
+## Short summary
 
 * Uses Gradle to build
 * Can deploy web app t Tomcat server
