@@ -20,6 +20,7 @@ public class CalculatorModelImpl implements CalculatorModel {
     @Override
     public Number add(final Number... numbers) {
         double res = 0d;
+        int unusedInteger = 0;
         for (Number number : numbers) {
             if(number != null) {
                 res += number.doubleValue();
