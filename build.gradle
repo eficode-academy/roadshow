@@ -18,8 +18,11 @@ ext.trainingUserName = 'mytrainingusername' // it is a good idea to chose the sa
 
 ext {
 artifactoryUrlAndPort = System.properties.artifactoryUrlAndPort ?: "http://roadshowartifactory:8081/artifactory"
-tomcatUrlAndPort = System.properties.tomcatUrlAndPort ?: "http://roadshowtomcatserver:8080/"
-
+tomcatHostname = System.properties.tomcatHostname ?: "roadshowtomcatserver/" //no http or https
+tomcatPort = System.properties.tomcatPort ?: "8080"
+seleniumHostname = System.properties.seleniumHostname ?: "10.10.1.134"
+seleniumPort = System.properties.seleniumPort ?: "44444"
+tomcatUrlAndPort = "http://" + tomcatHostname + ":" + tomcatPort
 appName = name
 
 deployContext = System.properties.deployContext ?: "RC" // should be either RC or REL
@@ -33,7 +36,7 @@ group = 'net.praqma.roadshow.buep' // FIXME - add your initials or github id her
 
 ext.versionMajor = "0"
 ext.versionMinor = "0"
-ext.versionPatch = "40"
+ext.versionPatch = "51"
 
 version = "${versionMajor}.${versionMinor}.${versionPatch}-${buildNumber}"
 
@@ -49,7 +52,9 @@ task printProps {
 			println "App name: ${appName}"
 			println "Training user name: ${trainingUserName}"
 			println "Artifactory URL and port: ${artifactoryUrlAndPort}"
-			println "Tomcat URL and port:      ${tomcatUrlAndPort}"
+			println "Tomcat host name 'tomcatHostname':      ${tomcatHostname}"
+            println "Tomcat port 'tomcatPort':    ${tomcatPort}"
+            println "Tomcat port 'tomcatUrlAndPort':    ${tomcatUrlAndPort}"
 			println "Deploy context: ${deployContext}"
 			println "Deploy path: ${deployPath}"
 			println "Version: ${version}"
@@ -69,6 +74,9 @@ def repositoryUrl(name) {
 }
 
 
+tasks.withType(JavaCompile){
+    options.warnings = true
+}
 
 repositories {
     jcenter()
@@ -101,6 +109,12 @@ test {
    }
 }
 
+// disable caching of dependencies
+configurations.all {
+    // check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
 stopPort = 4455
 stopKey = 'stop'
 
@@ -109,7 +123,12 @@ task startApp(type: JettyRunWar) {
 }
 
 task functionalTestTomcat(type: Test) {
-		//systemProperties(appName: appName, tomcatUrlAndPort: tomcatUrlAndPort)
+    systemProperties(
+        deployPath: deployPath, 
+        tomcatUrlAndPort: tomcatUrlAndPort,
+        seleniumPort: seleniumPort,
+        seleniumHostname: seleniumHostname)
+    testLogging.showStandardStreams = true
     filter {
         includeTestsMatching "net.praqma.roadshow.functional.*"
     }
@@ -216,25 +235,35 @@ task deploy(type: Copy) {
 
 // https://github.com/bmuschko/gradle-cargo-plugin
 cargo {
-    //containerId = 'tomcat7x'
     containerId = 'tomcat8x'
-    //port = 8080
-		port = 49156
+    port = tomcatPort.toInteger()
     
-		deployable {
+    deployable {
         context = deployPath 
     }
-
+    
     remote {
-        //hostname = '10.10.1.134'
-        //username = 'deployer'
-        //password = 'tomcat'
-				hostname = 'tomcat-f2d80255-1.buep.cont.tutum.io'
-        username = 'admin'
-        password = 'admin123'
+        hostname = tomcatHostname
+        username = "admin"
+        password = "admin123"
+//        if (project.hasProperty('tomcatUsername')) {
+//            username = tomcatUsername
+//            println "********************" +  username
+//        } else {
+//            println "Property 'tomcatUsername' not defined"
+//        }
+//        
+//        if (project.hasProperty('tomcatPassword')) {
+//            password = tomcatPassword
+//            println "********************" +  password
+//        } else {
+//            println "Property 'tomcatPassword' not defined"
+//        }
     }
-
+    
 }
+
+
 
 
 

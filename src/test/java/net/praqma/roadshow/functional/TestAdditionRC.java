@@ -9,19 +9,26 @@ import org.junit.Test;
 
 public class TestAdditionRC {
 	private Selenium selenium;
-		// These are set by the project configuration in build.gradle, so not checking for existense
+    // These are set by the project configuration in build.gradle, so not checking for existense
     private static final String TOMCAT_URL_AND_PORT = System.getProperty("tomcatUrlAndPort");
-    private static final String APP_NAME = System.getProperty("appName");
+    private static final String DEPLOY_PATH = System.getProperty("deployPath");
+    private static final String SELENIUM_HOSTNAME = System.getProperty("seleniumHostname");
+    private static final String SELENIUM_PORT = System.getProperty("seleniumPort");
     
 	@Before
 	public void setUp() throws Exception {
-		selenium = new DefaultSelenium("roadshowseleniumserver", 44444 ,"*firefox", String.format(TOMCAT_URL_AND_PORT));
-		selenium.start();
+        System.out.println("TestAdditionRC functional test using selenium server");
+        System.out.println("*** Tomcat url and port for Test " + TOMCAT_URL_AND_PORT);
+        System.out.println("*** Deploy url (where '/Calculator' is found: " + DEPLOY_PATH);
+        System.out.println("*** Selenium server:" + SELENIUM_HOSTNAME);
+        System.out.println("*** Selenium port:" + SELENIUM_PORT);
+	selenium = new DefaultSelenium(SELENIUM_HOSTNAME,Integer.parseInt(SELENIUM_PORT) ,"*firefox", TOMCAT_URL_AND_PORT);
+    selenium.start();
 	}
 
 	@Test
 	public void testAddition() throws Exception {
-		selenium.open(APP_NAME);
+		selenium.open(DEPLOY_PATH + "/Calculator");
 		selenium.type("name=value", "2");
 		selenium.click("name=plus");
 		selenium.waitForPageToLoad("30000");
@@ -33,7 +40,7 @@ public class TestAdditionRC {
 
     @Test
 	public void testSubtract() throws Exception {
-		selenium.open(APP_NAME);
+		selenium.open(DEPLOY_PATH + "/Calculator");
 		selenium.type("name=value", "7");
 		selenium.click("name=plus");
 		selenium.waitForPageToLoad("30000");
