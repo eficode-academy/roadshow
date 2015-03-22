@@ -45,6 +45,8 @@ Build _war_ file that can be deployed to Tomcat, and reports unit test results t
 
 To enable manual build support on a Jenkins job, use the special `jenkinstest` task instead of `test` to ensure new timestamps on junit outpu files that the Jenkins JUnit plugin requires.
 
+`./gradlew war jenkinstest`
+
 ### Cleaning
 
 Cleaning, doing every gradle tasks from scratch:
@@ -64,6 +66,32 @@ You can run all supported static analysis checks with:
 `./gradlew staticanalysis`
 
 It will check on both main and test sources and report to xml files.
+
+There are different analysis available:
+
+* PMD
+* checkstyle
+* Fingbugs
+* jdepend
+
+They all have both a _Main_ and _Test_ task, that analysis respectively main sources or test sources.
+For example `pmdMain` or `findbugsTest`.
+
+### Checking
+
+The built in gradle tasks `check` will also run all of the static analysis tools goals, including the `test` tasks which is unit test.
+
+`./gradlew check`
+
+
+### Code documentation
+
+You can generate javadoc on the sources with:
+
+`./gradlew javadoc`
+
+
+
 
 
 
