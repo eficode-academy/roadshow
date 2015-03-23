@@ -235,7 +235,7 @@ task deploy(type: Copy) {
 
 // https://github.com/bmuschko/gradle-cargo-plugin
 cargo {
-    containerId = 'tomcat8x'
+    containerId = 'tomcat7x'
     port = tomcatPort.toInteger()
     
     deployable {
@@ -244,21 +244,21 @@ cargo {
     
     remote {
         hostname = tomcatHostname
-        username = "admin"
-        password = "admin123"
-//        if (project.hasProperty('tomcatUsername')) {
-//            username = tomcatUsername
-//            println "********************" +  username
-//        } else {
-//            println "Property 'tomcatUsername' not defined"
-//        }
-//        
-//        if (project.hasProperty('tomcatPassword')) {
-//            password = tomcatPassword
-//            println "********************" +  password
-//        } else {
-//            println "Property 'tomcatPassword' not defined"
-//        }
+//        username = "username"
+//        password = "password"
+        if (project.hasProperty('tomcatUsername')) {
+            username = tomcatUsername
+            println "********************" +  username
+        } else {
+            println "Property 'tomcatUsername' not defined"
+        }
+        
+        if (project.hasProperty('tomcatPassword')) {
+            password = tomcatPassword
+            println "********************" +  password
+        } else {
+            println "Property 'tomcatPassword' not defined"
+        }
     }
     
 }
