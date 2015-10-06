@@ -34,9 +34,9 @@ buildNumber = System.properties.buildNumber ?: "SNAPSHOT"
 
 group = 'net.praqma.roadshow.buep' // FIXME - add your initials or github id here
 
-ext.versionMajor = "0"
-ext.versionMinor = "0"
-ext.versionPatch = "51"
+ext.versionMajor = "1"
+ext.versionMinor = "1"
+ext.versionPatch = "0"
 
 version = "${versionMajor}.${versionMinor}.${versionPatch}-${buildNumber}"
 
