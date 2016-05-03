@@ -1,0 +1,4 @@
+language: java
+java:
+- 8
+script: ./gradlew check
