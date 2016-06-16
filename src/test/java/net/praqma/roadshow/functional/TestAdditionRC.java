@@ -17,6 +17,7 @@ public class TestAdditionRC {
     
 	@Before
 	public void setUp() throws Exception {
+	System.out.println("TestAdditionRC functional test using selenium server");
         System.out.println("TestAdditionRC functional test using selenium server");
         System.out.println("*** Tomcat url and port for Test " + TOMCAT_URL_AND_PORT);
         System.out.println("*** Deploy url (where '/Calculator' is found: " + DEPLOY_PATH);
